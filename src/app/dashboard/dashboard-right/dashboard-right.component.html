@@ -1,0 +1,37 @@
+<div class=" d-flex justify-content-center">
+
+    <div id="container">
+        <img id="left" src="../../assets/images/leftarrow.png" alt=""
+            [ngClass]="{'oppacity': selectedIndex === 0}" (click)="onPrevClick()">
+
+        <section id="middle" class="carousel-wrapper">
+            <div *ngIf="indicators" class="carousel-dot-container">
+                <span *ngFor="let dot of images; let i = index" [ngClass]="{'active': selectedIndex === i}"
+                    (click)="selectedImage(i)" class="dot">
+                </span>
+
+            </div>
+
+            <div *ngFor="let image of images; let i=index" class="carousel-container">
+                <img data-attr="img" [src]="image" alt="" class="image-fluid"
+                    [ngClass]="{'image-active': selectedIndex === i}">
+            </div>
+            <div class="name-container">
+                <p class="trip-name">The Guy</p>
+            </div>
+        </section>
+        <img id="right"
+        [ngClass]="{'oppacity': selectedIndex === 4}"
+         src="../../assets/images/rightarrow.png" alt="" (click)="onNextClick()">
+    </div>
+
+</div>
+
+<div class="container text-center">
+    <div class="row d-flex justify-content-center">
+        <img src="../../assets/images/like.png" alt="" class="image-fluid " (click)="liked()">
+        <img src="../../assets/images/pass.png" alt="" class="image-fluid " (click)="pass()">
+        <img src="../../assets/images/fav.png" alt="" class="image-fluid " (click)="fav()">
+
+    </div>
+</div>

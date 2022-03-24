@@ -1,0 +1,42 @@
+
+.first-row{
+   display: flex;
+   justify-content: center;
+   gap: 20px;
+   margin-top: 40px;
+   
+}
+
+h4 {
+    color: rgb(195, 88, 108);
+}
+
+
+
+.second-row{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+   margin-top: 60px;
+}
+
+.aboutme{
+    margin-left: 35px;
+}
+
+.doyoudrink, .doyousmoke, .dohavekids , .doyouwantkids {
+    margin-left: 10px;
+}
+
+
+.btn-color {
+    
+     display: flex;
+     justify-content: center;
+
+     margin-top: 70px;
+}
+
+.btn {
+    background-color: rgb(195, 88, 108);
+}

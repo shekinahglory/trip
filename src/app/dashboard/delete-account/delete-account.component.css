@@ -1,0 +1,22 @@
+
+
+.container{
+   margin: auto;
+   width: 40%;
+   text-align: center;
+
+}
+.form-control {
+    width: 500px;
+    
+}
+
+h2, h4 {
+    color: rgb(195, 88, 108);
+}
+
+.btn {
+    background-color: rgb(92, 28, 28);
+    color: white;
+
+}

@@ -1,0 +1,33 @@
+
+
+p, label{
+    color: white;
+}
+button{
+    color: white;
+}
+h1,h2,h3,h4,h5,h5,h6{
+    color: white;
+}
+
+span{
+    color: red;
+}
+
+.btn {
+    
+    color: rgb(242, 245, 247);
+    background-color: rgb(236, 42, 149);
+    
+   
+}
+
+/* Image  */
+
+.figure{
+    height: 300px;
+}
+
+.padding-0{
+    padding-bottom: 0;
+}

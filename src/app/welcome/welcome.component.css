@@ -1,0 +1,30 @@
+
+.btn {
+    margin-top: 50px;
+    margin-right: 50px;
+    color: rgb(236, 42, 149);
+    background-color: rgb(242, 245, 247);
+}
+.container-fluid{
+
+    background-image: url(/../assets/images/girl.JPG);
+    height: 100vh;
+    /* Center and scale the image nicely */
+    /* background-position: center;*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; 
+}
+
+.float-start{
+    position: fixed;
+    bottom: 50px;
+
+}
+
+.float-start .btn {
+    color: rgb(242, 245, 247);
+    background-color: rgb(236, 42, 149);
+}
+
+

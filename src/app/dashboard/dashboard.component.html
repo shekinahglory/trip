@@ -1,0 +1,45 @@
+<div class="container-fluid g-0">
+
+    <div class="row g-0">
+        <div class="col-md-4 left-page ">
+            <div class="header g-0">
+
+                <div class="column">
+                    <div class="profile-image">
+                        <img class="img-fluid rounded-circle" src="/../assets/images/girl.JPG" alt="" (click)="editProfile()">
+                    </div>
+                </div>
+
+                <div class="column2">
+                    <p class="h5">Fun Girl</p>
+                </div>
+            </div>
+            <app-message-connection *ngIf="rightSideContent == 1"></app-message-connection>
+
+            <div class="edit-profile-images" *ngIf="rightSideContent === 2">
+                <div class="profile-images" (click)="gotoProfileImages()"
+                [ngClass]="{'active': accountsetting}"
+                >
+                    <h3>Edit profile images</h3>
+                </div>
+
+                <div class="about" (click)="gotoAbout()"
+                [ngClass]="{'active': editabout}"
+                >
+                    <h3>Edit about</h3>
+                </div>
+                <div class="delete-account" (click)="gotoDeleteaccount()"
+                [ngClass]="{'active': deleteaccount}"
+                >
+                    <h3>Delete Account</h3>
+                </div>
+            </div>
+              
+        </div>
+        <div class="col-md-8">
+
+             <router-outlet></router-outlet>
+            
+        </div>
+    </div>
+</div>
