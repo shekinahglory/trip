@@ -1,1 +1,50 @@
-<p>children works!</p>
+<div class="container">
+    <div class="row pt-5">
+        <div class="col">
+            <h3>Do you have Kids?</h3>
+
+            <hr>
+            <hr>
+            <div class="row">
+                <div class="form-check" *ngFor="let item of itemsList | slice:0:3, let i=index">
+                    <input
+                     [(ngModel)]="radioSelected"
+                     value="{{item.value}}" (change)="onItemChange(item)"
+                    class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault"/>
+                    <label class="form-check-label" for="flexRadioDefault"> {{item.name}} </label>
+                    <br>
+                    <br>
+                  </div>
+                 
+                  <!-- Default checked radio -->
+                 
+                 
+            </div>
+
+              <h3>Do you want Kids</h3>
+              <hr>
+           <div class="row">
+            <div class="form-check" *ngFor="let item of itemsListKids">
+                <input
+                 [(ngModel)]="radioSelectedKid"
+                 value="{{item.value}}" (change)="onItemChangeKids(item)"
+                class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2"/>
+                <label class="form-check-label" for="flexRadioDefault2"> {{item.name}} </label>
+                <br>
+                <br>
+              </div>
+              <br>
+            
+             
+           </div>
+              
+        </div>
+        
+    </div>
+
+    <hr>
+    <div class="">
+      <button class="btn" (click)="previous()">PREVIOUS</button> <button class="btn" (click)="next()">NEXT</button>
+    </div>
+
+</div>

@@ -22,6 +22,10 @@ import { DashboardRightComponent } from './dashboard/dashboard-right/dashboard-r
 import { EditProfileComponent } from './dashboard/edit-profile/edit-profile.component';
 import { EditAboutComponent } from './dashboard/edit-about/edit-about.component';
 import { DeleteAccountComponent } from './dashboard/delete-account/delete-account.component';
+import { UserServiceService } from './services/user-service.service';
+import {MatSliderModule} from '@angular/material/slider'; 
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -33,7 +37,7 @@ const routes: Routes = [
      {path:"", component:AboutmeComponent},
      {path:"children", component:ChildrenComponent},
      {path:"credentials", component:CredentialsComponent},
-     {path:"skils", component:SkillsComponent},
+     {path:"skills", component:SkillsComponent},
 
   ]},
   {path: "dashboard", component:DashboardComponent, children:[
@@ -44,7 +48,8 @@ const routes: Routes = [
      {path:"editabout", component: EditAboutComponent}
      
     
-  ]}
+  ]},
+  {path: "accountcreated", component: AccountcreatedComponent}
 ]
 
 @NgModule({
@@ -74,9 +79,12 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MatTabsModule,
     CarouselModule,
-    WavesModule
+    MatSliderModule,
+    WavesModule, 
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [UserServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

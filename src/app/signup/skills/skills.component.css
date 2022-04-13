@@ -1,0 +1,24 @@
+
+p, label{
+    color: white;
+}
+button{
+    color: white;
+}
+h1,h2,h3,h4,h5,h5,h6{
+    color: white;
+}
+.btn {
+    
+    color: rgb(242, 245, 247);
+    background-color: rgb(236, 42, 149);
+    margin: 10px;
+    
+   
+}
+
+
+mat-slider {
+    width: 800px;
+    color: rgb(196, 196, 218);
+}
