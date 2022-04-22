@@ -26,6 +26,7 @@ import { UserServiceService } from './services/user-service.service';
 import {MatSliderModule} from '@angular/material/slider'; 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ImageService } from './services/user.service.image';
 
 
 
@@ -84,7 +85,7 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule
   ],
-  providers: [UserServiceService],
+  providers: [UserServiceService, ImageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,28 @@
+
+
+.container-fluid {
+    background: rgb(32, 34, 46);
+    height: 100vh;
+   
+    
+}
+
+.f {
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    width: 40%;
+}
+
+
+
+.btn-primary {
+    background-color: rgb(195, 88, 108);
+    color: white;
+    
+}
+
+.h1 , h4{
+    font-weight: bold;
+    color: rgb(195, 88, 108);;
+}

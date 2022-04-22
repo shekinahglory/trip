@@ -1,4 +1,7 @@
 
+.error {
+    color: red;
+}
 
 p, label{
     color: white;
@@ -95,6 +98,10 @@ p {
 .btn-save {
     background-color: rgb(195, 88, 108);
     color: white;
+}
+
+.error-input-border {
+    border: 2px solid #FF0000;
 }
 
 
