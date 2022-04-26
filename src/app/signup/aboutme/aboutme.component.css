@@ -45,12 +45,12 @@ p {
    
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    max-width: 750px;
+    /* max-width: 750px; */
     gap: 15px;
-    top: 50;
+    top: 10;
     left: 0;
     right: 0;
-    margin: 80px auto;
+    margin: 20px auto;
    
     
     
@@ -59,8 +59,8 @@ p {
 
 .images-wrapper{
     position: relative;
-    width: 250px;
-    height: 300px;
+    width: 30vh;
+    height: 40vh;
     background-color: blanchedalmond;
     border-radius: 18px;
 
@@ -68,8 +68,8 @@ p {
 
 .image-fluid{
     position: absolute;
-    width: 250px;
-    height: 300px;
+    width: 30vh;
+    height: 40vh;
     border-radius: 18px;
 
 }

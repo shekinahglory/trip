@@ -1,7 +1,10 @@
 
 
-.container-bg{
+html{
     background: rgb(32, 34, 46);
     height: 100vh;
-   
+}
+
+.container-bg{
+    background: rgb(32, 34, 46);
 }

@@ -36,7 +36,7 @@ export class SkillsComponent implements OnInit {
                 data => {
                   this.userSaved = true;
                   this.saveImages(data);
-    
+                  this.router.navigateByUrl("/accountcreated")
                   
                 },
                 error => {

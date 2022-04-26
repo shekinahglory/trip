@@ -1,4 +1,7 @@
-
+.container{
+    background: rgb(32, 34, 46);
+    height: 100vh;
+}
 p, label{
     color: white;
 }

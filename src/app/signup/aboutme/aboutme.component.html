@@ -1,195 +1,199 @@
 
 
 <div class="container-bg">
-    <div class="container">
+    <div class="container container-fluid">
         <div class="row pt-5">
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md">
-                        <div class="form-group">
-                            <label for="" class="label">You are a  <span>*</span></label>
-                            <select class="form-select" [(ngModel)]="gender" aria-label="Selection one"  aria-placeholder="Selection one">
-                        
-                                <option *ngFor="let g of genderOptions">{{g.name}}</option>
-                               
-                              </select>
+            <div class="col-xl-5">
+                        <div class="row">
+                            <div class="col-md">
+                                <div class="form-group">
+                                    <label for="" class="label">You are a  <span>*</span></label>
+                                    <select class="form-select" [(ngModel)]="gender" aria-label="Selection one"  aria-placeholder="Selection one">
+                                
+                                        <option *ngFor="let g of genderOptions">{{g.name}}</option>
+                                    
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-group">
+                                    <label for="" class="label">Looking for a  <span>*</span></label>
+                                    <select class="form-select" [(ngModel)]="lookingGender" aria-label="Selection one" aria-placeholder="Selection one">
+                                
+                                        <option *ngFor="let gl of genderLookOptions">{{gl.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md">
-                        <div class="form-group">
-                            <label for="" class="label">Looking for a  <span>*</span></label>
-                            <select class="form-select" [(ngModel)]="lookingGender" aria-label="Selection one" aria-placeholder="Selection one">
-                        
-                                <option *ngFor="let gl of genderLookOptions">{{gl.name}}</option>
-                              </select>
-                        </div>
-                    </div>
-                </div>
 
-               <div class="row">
-                <div class="form-group">
-                    <label for="" class="label">Where do you live? <span>*</span></label>
-                    <select class="form-select" [(ngModel)]="state" aria-label="Default select example">
-                        
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="" class="label">Where do you live? <span>*</span></label>
+                            <select class="form-select" [(ngModel)]="state" aria-label="Default select example">
+                                
+                            
+                                <option *ngFor="let st of stateList">{{st.name}}</option>
+                            </select>
+                        </div>
+                        <br>
+                        <br>
+                        <hr>
+                        <div class="form-group">
+                        <input type="text" [(ngModel)]="city" class="form-control" placeholder="City">
+                        </div>
+                    </div>
+                    <hr>
+                    <h6>Date of birth <span>*</span></h6>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="">Month</label>
+                                <input type="text" [(ngModel)]="month" class="form-control" placeholder="mm">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="">Day</label>
+                                <input type="text" [(ngModel)]="day" class="form-control" placeholder="dd">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="">Year</label>
+                                    <input type="text" [(ngModel)]="year" class="form-control" placeholder="yyyy">
+                                
+                                </div>
+                        </div>
+                        <br>
+                        <p class=" text-muted d-flex justify-content-center">Your date of birth will be used to calculate your age.</p>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <input type="email" [ngClass]="{'error-input-border' : emailEmpty}" [(ngModel)]="email" (input)="emailChanged($event)" class="form-control" placeholder="email address ">
+                        </div>
+                        <p class=" text-muted d-flex justify-content-center">Your email address remain PRIVATE.</p>
+                        <p class="error" *ngIf="emailError">Email already exist</p>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                        <input type="text" [(ngModel)]="username" class="form-control" (input)="onUsernameChaged($event)" placeholder="Choose Your Username">
+                            </div>
+                            <p class=" text-muted d-flex justify-content-center">No spaces, brackets or quotes Minimum 4 characters.</p>
+                            <p class="error" *ngIf="usernameError">Username already exist!</p>
+                    </div>
+                    <div class="row">
+                        <input type="password" class="form-control" [(ngModel)]="password" placeholder="Choose your password">
+                    </div>
+                    <hr>
+
+                   
+    
+            </div>
+    
+            <div class="col-xl-7">
+                <div class="container pl-1">
+                    <h6 class="padding-left-md">Profile Photo</h6>
+                
+                    <div class="container-grid">
+            
+                                <div class="images-wrapper">
+                                    <img [src]="yourimages[0]" alt="" class="image-fluid">
+
+                                    <div class="add-orremove-container">
+                                        <input
+                                        style="display: none"
+                                        type="file"
+                                        (change)="onFileChanged($event)"
+                                        #fileInput>
+                                        <img *ngIf="yourimages[0] && !yourimages[1]"  (click)="removeImage(0)" src="../../../assets/images/removeimage.png" alt="" class="image-controller">
+                                        <img *ngIf="!yourimages[0]" (click)="fileInput.click()" src="../../../assets/images/addimage.png" alt="" class="image-controller">
+                                    </div>
+                                </div>
+
+                                <div class="images-wrapper">
+                                    <img [src]="yourimages[1]" alt="" class="image-fluid">
+                                    <div class="add-orremove-container">
+                                        <input
+                                        style="display: none"
+                                        type="file"
+                                        (change)="onFileChanged1($event)"
+                                        #fileInput1>
+                                        <img *ngIf="yourimages[1] && !yourimages[2]" (click)="removeImage(1)" src="../../../assets/images/removeimage.png" alt="" class="image-controller">
+                                        <img *ngIf="!yourimages[1] && yourimages[0]" (click)="fileInput1.click()" src="../../../assets/images/addimage.png" alt="" class="image-controller">
+                                    </div>
+                                </div>
+
+                                <div class="images-wrapper">
+                                    <img [src]="yourimages[2]" *ngIf="yourimages[2]" alt="" class="image-fluid">
+                                    <div class="add-orremove-container">
+                                        <input
+                                            style="display: none"
+                                            type="file"
+                                            (change)="onFileChanged2($event)"
+                                            #fileInput2>
+                                            <img *ngIf="yourimages[2] && !yourimages[3]" (click)="removeImage(2)" src="../../../assets/images/removeimage.png" alt="" class="image-controller">
+                                        <img *ngIf="!yourimages[2] && yourimages[1]" src="../../../assets/images/addimage.png" (click)="fileInput2.click()" alt="" class="image-controller">
+                                    </div>
+                                </div>
+
+                                <div class="images-wrapper">
+                                    <img [src]="yourimages[3]" *ngIf="yourimages[3]" alt="" class="image-fluid">
+                                    <div class="add-orremove-container">
+                                        <input
+                                            style="display: none"
+                                            type="file"
+                                            (change)="onFileChanged3($event)"
+                                            #fileInput3>
+                                            <img *ngIf="yourimages[3] && !yourimages[4]" (click)="removeImage(3)" src="../../../assets/images/removeimage.png" alt="" class="image-controller">
+                                        <img *ngIf="!yourimages[3] && yourimages[2]" src="../../../assets/images/addimage.png" (click)="fileInput3.click()" alt="" class="image-controller">
+                                    </div>
+                                </div>
+
+                                <div class="images-wrapper">
+                                    <img [src]="yourimages[4]" *ngIf="yourimages[4]" alt="" class="image-fluid">
+                                    <div class="add-orremove-container">
+                                        <input
+                                        style="display: none"
+                                        type="file"
+                                        (change)="onFileChanged4($event)"
+                                        #fileInput4>
+                                        <img *ngIf="yourimages[4] && !yourimages[2]" (click)="removeImage(4)" src="../../../assets/images/removeimage.png" alt="" class="image-controller">
+                                    <img *ngIf="!yourimages[4] && yourimages[3]" src="../../../assets/images/addimage.png" (click)="fileInput4.click()" alt="" class="image-controller">
+                                    </div>
+                                </div>
+
+                                <div class="images-wrapper">
+                                    <img [src]="yourimages[5]" *ngIf="yourimages[5]" alt="" class="image-fluid">
+                                    <div class="add-orremove-container">
+                                        <input
+                                        style="display: none"
+                                        type="file"
+                                        (change)="onFileChanged5($event)"
+                                        #fileInput5>
+                                        <img *ngIf="yourimages[5]" (click)="removeImage(3)" src="../../../assets/images/removeimage.png" alt="" class="image-controller">
+                                    <img *ngIf="!yourimages[5] && yourimages[4]"  src="../../../assets/images/addimage.png" (click)="fileInput5.click()" alt="" class="image-controller">
+                                    </div>
+                                </div>
+
+                
                        
-                        <option *ngFor="let st of stateList">{{st.name}}</option>
-                      </select>
-                </div>
-                <br>
-                <br>
-                <hr>
-                <div class="form-group">
-                 <input type="text" [(ngModel)]="city" class="form-control" placeholder="City">
-                </div>
-               </div>
-               <hr>
-               <h6>Date of birth <span>*</span></h6>
-               <div class="row">
-                   <div class="col-md-4">
-                       <div class="form-group">
-                        <label for="">Month</label>
-                        <input type="text" [(ngModel)]="month" class="form-control" placeholder="mm">
-                       </div>
-                   </div>
-                   <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="">Day</label>
-                        <input type="text" [(ngModel)]="day" class="form-control" placeholder="dd">
-                       </div>
-                   </div>
-                   <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="">Year</label>
-                            <input type="text" [(ngModel)]="year" class="form-control" placeholder="yyyy">
-                           
+                       
                         </div>
-                   </div>
-                   <br>
-                   <p class=" text-muted d-flex justify-content-center">Your date of birth will be used to calculate your age.</p>
-               </div>
 
-               <div class="row">
-                   <div class="form-group">
-                       <input type="email" [ngClass]="{'error-input-border' : emailEmpty}" [(ngModel)]="email" (input)="emailChanged($event)" class="form-control" placeholder="email address ">
-                   </div>
-                   <p class=" text-muted d-flex justify-content-center">Your email address remain PRIVATE.</p>
-                   <p class="error" *ngIf="emailError">Email already exist</p>
-               </div>
-               <div class="row">
-                   <div class="form-group">
-                   <input type="text" [(ngModel)]="username" class="form-control" (input)="onUsernameChaged($event)" placeholder="Choose Your Username">
-                    </div>
-                    <p class=" text-muted d-flex justify-content-center">No spaces, brackets or quotes Minimum 4 characters.</p>
-                    <p class="error" *ngIf="usernameError">Username already exist!</p>
-               </div>
-               <div class="row">
-                   <input type="password" class="form-control" [(ngModel)]="password" placeholder="Choose your password">
-               </div>
-               <hr>
-
-               <div class="row">
-               
-                   <button class="btn" (click)="continue()" >CONTINUE</button>
-               </div>
-    
+                        <div class="d-flex justify-content-center">
+                            <p class="lead">Add at least 2 photos to continue</p>
+                        </div>
+                </div>
+        
             </div>
-    
-            <div class="col-md-6">
-              <div class="container pl-1">
-                <h6 class="padding-left-md">Profile Photo</h6>
-               
-                     
 
-<div class="container-grid">
-   
-    <div class="images-wrapper">
-        <img [src]="yourimages[0]" alt="" class="image-fluid">
-
-        <div class="add-orremove-container">
-            <input
-            style="display: none"
-            type="file"
-            (change)="onFileChanged($event)"
-            #fileInput>
-            <img *ngIf="yourimages[0] && !yourimages[1]"  (click)="removeImage(0)" src="../../../assets/images/removeimage.png" alt="" class="image-controller">
-            <img *ngIf="!yourimages[0]" (click)="fileInput.click()" src="../../../assets/images/addimage.png" alt="" class="image-controller">
         </div>
     </div>
-
-    <div class="images-wrapper">
-        <img [src]="yourimages[1]" alt="" class="image-fluid">
-        <div class="add-orremove-container">
-            <input
-            style="display: none"
-            type="file"
-            (change)="onFileChanged1($event)"
-            #fileInput1>
-            <img *ngIf="yourimages[1] && !yourimages[2]" (click)="removeImage(1)" src="../../../assets/images/removeimage.png" alt="" class="image-controller">
-            <img *ngIf="!yourimages[1] && yourimages[0]" (click)="fileInput1.click()" src="../../../assets/images/addimage.png" alt="" class="image-controller">
-        </div>
-    </div>
-
-    <div class="images-wrapper">
-        <img [src]="yourimages[2]" *ngIf="yourimages[2]" alt="" class="image-fluid">
-        <div class="add-orremove-container">
-            <input
-                style="display: none"
-                type="file"
-                (change)="onFileChanged2($event)"
-                #fileInput2>
-                <img *ngIf="yourimages[2] && !yourimages[3]" (click)="removeImage(2)" src="../../../assets/images/removeimage.png" alt="" class="image-controller">
-            <img *ngIf="!yourimages[2] && yourimages[1]" src="../../../assets/images/addimage.png" (click)="fileInput2.click()" alt="" class="image-controller">
-        </div>
-    </div>
-
-    <div class="images-wrapper">
-        <img [src]="yourimages[3]" *ngIf="yourimages[3]" alt="" class="image-fluid">
-        <div class="add-orremove-container">
-            <input
-                style="display: none"
-                type="file"
-                (change)="onFileChanged3($event)"
-                #fileInput3>
-                <img *ngIf="yourimages[3] && !yourimages[4]" (click)="removeImage(3)" src="../../../assets/images/removeimage.png" alt="" class="image-controller">
-            <img *ngIf="!yourimages[3] && yourimages[2]" src="../../../assets/images/addimage.png" (click)="fileInput3.click()" alt="" class="image-controller">
-        </div>
-    </div>
-
-    <div class="images-wrapper">
-        <img [src]="yourimages[4]" *ngIf="yourimages[4]" alt="" class="image-fluid">
-        <div class="add-orremove-container">
-            <input
-            style="display: none"
-            type="file"
-            (change)="onFileChanged4($event)"
-            #fileInput4>
-            <img *ngIf="yourimages[4] && !yourimages[2]" (click)="removeImage(4)" src="../../../assets/images/removeimage.png" alt="" class="image-controller">
-        <img *ngIf="!yourimages[4] && yourimages[3]" src="../../../assets/images/addimage.png" (click)="fileInput4.click()" alt="" class="image-controller">
-        </div>
-    </div>
-
-    <div class="images-wrapper">
-        <img [src]="yourimages[5]" *ngIf="yourimages[5]" alt="" class="image-fluid">
-        <div class="add-orremove-container">
-            <input
-            style="display: none"
-            type="file"
-            (change)="onFileChanged5($event)"
-            #fileInput5>
-            <img *ngIf="yourimages[5]" (click)="removeImage(3)" src="../../../assets/images/removeimage.png" alt="" class="image-controller">
-        <img *ngIf="!yourimages[5] && yourimages[4]"  src="../../../assets/images/addimage.png" (click)="fileInput5.click()" alt="" class="image-controller">
-        </div>
-    </div>
-
-    
-</div>
-
-<div class="d-flex justify-content-center">
-    <p class="lead">Add at least 2 photos to continue</p>
-</div>
-              </div>
-    
-            </div>
-        </div>
+    <div class="row">
+        <div class="d-flex justify-content-center">
+            <button class="btn" (click)="continue()" >CONTINUE</button>
+        </div>   
+       
     </div>
 </div>
