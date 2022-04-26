@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { ConnecAndSave } from 'src/app/services/user.service.connandsave';
 import { ImageService } from 'src/app/services/user.service.image';
+import { LocalStorageService } from 'src/app/services/user.service.localstorage';
 
 @Component({
   selector: 'app-skills',
@@ -15,7 +16,8 @@ export class SkillsComponent implements OnInit {
   userSaved = false;
 
   constructor(private router: Router, private userService:UserServiceService, 
-    private saveService: ConnecAndSave, private imageService: ImageService) { }
+    private saveService: ConnecAndSave, private imageService: ImageService, 
+    private localStorage: LocalStorageService) { }
 
   ngOnInit(): void {
     console.log(this.imageService);
@@ -28,16 +30,12 @@ export class SkillsComponent implements OnInit {
     this.userService.setIncome("4000000");
     this.userService.setEducation("Bachelors");
 
-    // console.log(this.userService);
-
-
     this.saveService.saveUser(this.userService)
               .subscribe(
                 data => {
                   this.userSaved = true;
-                  this.saveImages(data);
-                  this.router.navigateByUrl("/accountcreated")
-                  
+                  this.saveImages(data);   
+                  this.router.navigateByUrl("/accountcreated");
                 },
                 error => {
                   console.log(error);
@@ -45,16 +43,8 @@ export class SkillsComponent implements OnInit {
                 ()=>{
                   console.log('completed');
                 }
-                
               );
-
-             
             console.log(this.userSaved); 
-  
- 
-             
-
-
 
   }
 
@@ -65,6 +55,7 @@ export class SkillsComponent implements OnInit {
 
       this.saveService.saveImage(imageData).subscribe(
             data => {
+              this.localStorage.set("token",data);
               console.log(data);
             }
       );
@@ -73,9 +64,7 @@ export class SkillsComponent implements OnInit {
         const imageDataSec = new FormData();
         imageDataSec.append('file', this.imageService.getSecond(), username);
         this.saveService.saveImage(imageDataSec).subscribe(
-              data => {
-                console.log(data);
-              }
+              
         )
 
       }
@@ -84,9 +73,7 @@ export class SkillsComponent implements OnInit {
         const imageDataSec = new FormData();
         imageDataSec.append('file', this.imageService.getThird(), username);
         this.saveService.saveImage(imageDataSec).subscribe(
-              data => {
-                console.log(data);
-              }
+             
         )
 
       }
@@ -95,9 +82,7 @@ export class SkillsComponent implements OnInit {
         const imageDataSec = new FormData();
         imageDataSec.append('file', this.imageService.getFourth(), username);
         this.saveService.saveImage(imageDataSec).subscribe(
-              data => {
-                console.log(data);
-              }
+            
         )
 
       }
@@ -106,9 +91,7 @@ export class SkillsComponent implements OnInit {
         const imageDataSec = new FormData();
         imageDataSec.append('file', this.imageService.getFith(), username);
         this.saveService.saveImage(imageDataSec).subscribe(
-              data => {
-                console.log(data);
-              }
+             
         )
 
       }
@@ -117,9 +100,7 @@ export class SkillsComponent implements OnInit {
         const imageDataSec = new FormData();
         imageDataSec.append('file', this.imageService.getSix(), username);
         this.saveService.saveImage(imageDataSec).subscribe(
-              data => {
-                console.log(data);
-              }
+             
         )
 
       }

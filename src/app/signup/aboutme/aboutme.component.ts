@@ -55,7 +55,7 @@ stateList = [
       , private backendService: ConnecAndSave) { }
 
   ngOnInit(): void {
-    this.yourimages[0] = "https://trippalimages.s3.us-east-2.amazonaws.com/1650491318616-StudioPas"
+    this.yourimages[0] = ""
   }
 
 

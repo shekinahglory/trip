@@ -27,6 +27,10 @@ import {MatSliderModule} from '@angular/material/slider';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ImageService } from './services/user.service.image';
+import { JWTTokenService } from './services/user.service.jwttokenservice';
+import { LoginService } from './services/user.service.loginservice';
+import { LocalStorageService } from './services/user.service.localstorage';
+import { AuthService } from './services/user.service.authservice';
 
 
 
@@ -85,7 +89,7 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule
   ],
-  providers: [UserServiceService, ImageService],
+  providers: [UserServiceService, ImageService, JWTTokenService, LoginService, LocalStorageService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
