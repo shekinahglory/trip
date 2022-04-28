@@ -54,3 +54,11 @@
   .blue-color {
     color:blue;
 }
+
+.error-input-border {
+    border: 2px solid #FF0000;
+}
+
+.error{
+    color: #FF0000;
+}

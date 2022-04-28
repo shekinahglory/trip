@@ -11,7 +11,7 @@
                 </div>
 
                 <div class="column2">
-                    <p class="h5">Fun Girl</p>
+                    <p class="h5" (click)="logout()"> <span> {{username}}</span> </p>
                 </div>
             </div>
             <app-message-connection *ngIf="rightSideContent == 1"></app-message-connection>

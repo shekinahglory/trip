@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { JWTTokenService } from '../services/user.service.jwttokenservice';
 import { LocalStorageService } from '../services/user.service.localstorage';
+import { LoginService } from '../services/user.service.loginservice';
 
 @Component({
   selector: 'app-accountcreated',
@@ -9,7 +11,8 @@ import { LocalStorageService } from '../services/user.service.localstorage';
 })
 export class AccountcreatedComponent implements OnInit {
 
-  constructor(private jwtTokenService: JWTTokenService, private localStorage: LocalStorageService) { }
+  constructor(private jwtTokenService: JWTTokenService, private localStorage: LocalStorageService
+    , private router: Router) { }
 
   ngOnInit(): void {
 
@@ -19,12 +22,13 @@ export class AccountcreatedComponent implements OnInit {
     console.log(this.jwtTokenService.getDecodeToken());
     console.log(this.jwtTokenService.decodeToken())
     console.log(this.jwtTokenService.isTokenExpired())
-    console.log((this.jwtTokenService.getExpiryTime() )* 1000)
-    console.log(new Date().getTime());
-    const tokenTime = (this.jwtTokenService.getExpiryTime() )* 1000;
-    const currentTime = new Date().getTime();
+    
+    
+   
+  }
 
-    console.log(((tokenTime - currentTime) / 1000)/60)
+  goToDashBoard(){
+      this.router.navigateByUrl("/dashboard")
   }
 
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { JWTTokenService } from '../services/user.service.jwttokenservice';
+import { LocalStorageService } from '../services/user.service.localstorage';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,11 +17,23 @@ export class DashboardComponent implements OnInit {
   accountsetting = true;
   editabout = false;
   deleteaccount = false;
+  username:any = '';
   
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private localeStorage: LocalStorageService,
+              private jwtTokenService: JWTTokenService) { }
 
   ngOnInit(): void {
+    
+
+    let token:any = this.localeStorage.get('token');
+    this.jwtTokenService.setToken(token);
+    this.username = this.jwtTokenService.getUser();
+    // let username:any = this.jwtTokenService.decodedToken.sub
+
+    console.log(this.jwtTokenService.isTokenExpired());
+       
+
     if(this.router.url === '/dashboard/accountsettings' || this.router.url === '/dashboard/deleteaccount' 
     ||  this.router.url === '/dashboard/editabout'
     ){
@@ -89,5 +103,11 @@ export class DashboardComponent implements OnInit {
      this.accountsetting = false;
   }
   
+
+  logout(){
+
+    this.localeStorage.remove('token');
+    this.router.navigateByUrl("/login");
+  }
   
 }

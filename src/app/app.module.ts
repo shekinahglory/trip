@@ -31,6 +31,7 @@ import { JWTTokenService } from './services/user.service.jwttokenservice';
 import { LoginService } from './services/user.service.loginservice';
 import { LocalStorageService } from './services/user.service.localstorage';
 import { AuthService } from './services/user.service.authservice';
+import { AuthorizeGuard } from './services/user.service.authguard';
 
 
 
@@ -45,7 +46,7 @@ const routes: Routes = [
      {path:"skills", component:SkillsComponent},
 
   ]},
-  {path: "dashboard", component:DashboardComponent, children:[
+  {path: "dashboard", component:DashboardComponent, canActivate: [AuthorizeGuard],children:[
       
     {path: "", component: DashboardRightComponent},
      {path:"accountsettings", component: AccountsettingsComponent},
@@ -89,7 +90,7 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule
   ],
-  providers: [UserServiceService, ImageService, JWTTokenService, LoginService, LocalStorageService, AuthService],
+  providers: [UserServiceService, ImageService, JWTTokenService, LoginService, LocalStorageService, AuthService, AuthorizeGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
