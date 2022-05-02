@@ -35,7 +35,21 @@ export class AccountsettingsComponent implements OnInit {
        
         if(data.imagesUrls[0]){
           this.yourimages[0] = data.imagesUrls[0].url;
-          console.log(data.imagesUrls[0]);
+        }
+        if(data.imagesUrls[1]){
+          this.yourimages[1] = data.imagesUrls[1].url;
+        }
+        if(data.imagesUrls[2]){
+          this.yourimages[2] = data.imagesUrls[2].url;
+        }
+        if(data.imagesUrls[3]){
+          this.yourimages[3] = data.imagesUrls[3].url;
+        }
+        if(data.imagesUrls[4]){
+          this.yourimages[4] = data.imagesUrls[4].url;
+        }
+        if(data.imagesUrls[5]){
+          this.yourimages[5] = data.imagesUrls[5].url;
         }
       }
     )
@@ -53,7 +67,7 @@ export class AccountsettingsComponent implements OnInit {
   //   }
   // }
 
-  
+
   onFileChanged(event:any){
     const reader = new FileReader();
     this.selectedFile = event.target.files[0];
