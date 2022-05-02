@@ -33,9 +33,14 @@ export class AboutmeComponent implements OnInit {
 ];
 
 stateList = [
-  {name:'MD', value:1},
-  {name :'PA', value:2}
-]
+  {name:'Maryland', value:1},
+  {name :'Pensylvania', value:2},
+  {name:'New York', value:1},
+  {name :'Chicago', value:2}
+];
+
+cityList = [];
+
   
  selectedFile:any;
  selectedFile1:any;
@@ -48,14 +53,17 @@ stateList = [
  enabled = true;
  emailEmpty = false;
 
-
+ stateSelected(state:any){
+      console.log(state);
+ }
   yourimages:any = [ ];
 
-  constructor(private router: Router, private userService: UserServiceService, private imageService: ImageService
+  constructor(private router: Router, private userService: UserServiceService, 
+    private imageService: ImageService
       , private backendService: ConnecAndSave) { }
 
   ngOnInit(): void {
-    this.yourimages[0] = ""
+    
   }
 
 

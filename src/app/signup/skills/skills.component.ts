@@ -40,9 +40,7 @@ export class SkillsComponent implements OnInit {
                 error => {
                   console.log(error);
                 },
-                ()=>{
-                  console.log('completed');
-                }
+               
               );
             console.log(this.userSaved); 
 
@@ -64,7 +62,9 @@ export class SkillsComponent implements OnInit {
         const imageDataSec = new FormData();
         imageDataSec.append('file', this.imageService.getSecond(), username);
         this.saveService.saveImage(imageDataSec).subscribe(
-              
+          data => {
+            this.localStorage.set("token",data);
+          }
         )
 
       }
@@ -73,7 +73,10 @@ export class SkillsComponent implements OnInit {
         const imageDataSec = new FormData();
         imageDataSec.append('file', this.imageService.getThird(), username);
         this.saveService.saveImage(imageDataSec).subscribe(
-             
+          data => {
+            this.localStorage.set("token",data);
+          
+          }
         )
 
       }
@@ -82,7 +85,10 @@ export class SkillsComponent implements OnInit {
         const imageDataSec = new FormData();
         imageDataSec.append('file', this.imageService.getFourth(), username);
         this.saveService.saveImage(imageDataSec).subscribe(
-            
+          data => {
+            this.localStorage.set("token",data);
+          
+          }
         )
 
       }
@@ -91,7 +97,10 @@ export class SkillsComponent implements OnInit {
         const imageDataSec = new FormData();
         imageDataSec.append('file', this.imageService.getFith(), username);
         this.saveService.saveImage(imageDataSec).subscribe(
-             
+          data => {
+            this.localStorage.set("token",data);
+          
+          }
         )
 
       }
@@ -100,7 +109,10 @@ export class SkillsComponent implements OnInit {
         const imageDataSec = new FormData();
         imageDataSec.append('file', this.imageService.getSix(), username);
         this.saveService.saveImage(imageDataSec).subscribe(
-             
+          data => {
+            this.localStorage.set("token",data);
+          
+          }
         )
 
       }

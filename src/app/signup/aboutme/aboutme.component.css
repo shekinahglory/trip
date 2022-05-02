@@ -59,8 +59,8 @@ p {
 
 .images-wrapper{
     position: relative;
-    width: 30vh;
-    height: 40vh;
+    width: 14vw;
+    height: 30vh;
     background-color: blanchedalmond;
     border-radius: 18px;
 
@@ -68,8 +68,8 @@ p {
 
 .image-fluid{
     position: absolute;
-    width: 30vh;
-    height: 40vh;
+    width: 14vw;
+    height: 30vh;
     border-radius: 18px;
 
 }

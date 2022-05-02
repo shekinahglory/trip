@@ -32,6 +32,8 @@ import { LoginService } from './services/user.service.loginservice';
 import { LocalStorageService } from './services/user.service.localstorage';
 import { AuthService } from './services/user.service.authservice';
 import { AuthorizeGuard } from './services/user.service.authguard';
+import { DashboardService } from './services/user.service.dashboardservice';
+import { CommonService } from './services/user.service.commonservice';
 
 
 
@@ -90,7 +92,8 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule
   ],
-  providers: [UserServiceService, ImageService, JWTTokenService, LoginService, LocalStorageService, AuthService, AuthorizeGuard],
+  providers: [UserServiceService, ImageService, JWTTokenService, CommonService,
+    LoginService, LocalStorageService, AuthService, AuthorizeGuard, DashboardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,9 +1,91 @@
 
 
 <div class="container-grid">
-   
+
     <div class="images-wrapper">
-        <img [src]="yourimages[1]" alt="" class="image-fluid">
+        <img [src]="yourimages[0]" *ngIf="yourimages[0]" alt="" class="image-fluid">
+
+        <div class="add-orremove-container">
+            <input
+            style="display: none"
+            type="file"
+            (change)="onFileChanged($event)"
+            #fileInput>
+            <img *ngIf="yourimages[0] && !yourimages[1]"  (click)="removeImage(0)" src="../../../assets/images/removeimage.png" alt="" class="image-controller">
+            <img *ngIf="!yourimages[0]" (click)="fileInput.click()" src="../../../assets/images/addimage.png" alt="" class="image-controller">
+        </div>
+    </div>
+
+    <div class="images-wrapper">
+        <img [src]="yourimages[1]" *ngIf="yourimages[1]" alt="" class="image-fluid">
+        <div class="add-orremove-container">
+            <input
+            style="display: none"
+            type="file"
+            (change)="onFileChanged1($event)"
+            #fileInput1>
+            <img *ngIf="yourimages[1] && !yourimages[2]" (click)="removeImage(1)" src="../../../assets/images/removeimage.png" alt="" class="image-controller">
+            <img *ngIf="!yourimages[1] && yourimages[0]" (click)="fileInput1.click()" src="../../../assets/images/addimage.png" alt="" class="image-controller">
+        </div>
+    </div>
+
+    <div class="images-wrapper">
+        <img [src]="yourimages[2]" *ngIf="yourimages[2]" alt="" class="image-fluid">
+        <div class="add-orremove-container">
+            <input
+                style="display: none"
+                type="file"
+                (change)="onFileChanged2($event)"
+                #fileInput2>
+                <img *ngIf="yourimages[2] && !yourimages[3]" (click)="removeImage(2)" src="../../../assets/images/removeimage.png" alt="" class="image-controller">
+            <img *ngIf="!yourimages[2] && yourimages[1]" src="../../../assets/images/addimage.png" (click)="fileInput2.click()" alt="" class="image-controller">
+        </div>
+    </div>
+
+    <div class="images-wrapper">
+        <img [src]="yourimages[3]" *ngIf="yourimages[3]" alt="" class="image-fluid">
+        <div class="add-orremove-container">
+            <input
+                style="display: none"
+                type="file"
+                (change)="onFileChanged3($event)"
+                #fileInput3>
+                <img *ngIf="yourimages[3] && !yourimages[4]" (click)="removeImage(3)" src="../../../assets/images/removeimage.png" alt="" class="image-controller">
+            <img *ngIf="!yourimages[3] && yourimages[2]" src="../../../assets/images/addimage.png" (click)="fileInput3.click()" alt="" class="image-controller">
+        </div>
+    </div>
+
+    <div class="images-wrapper">
+        <img [src]="yourimages[4]" *ngIf="yourimages[4]" alt="" class="image-fluid">
+        <div class="add-orremove-container">
+            <input
+            style="display: none"
+            type="file"
+            (change)="onFileChanged4($event)"
+            #fileInput4>
+            <img *ngIf="yourimages[4] && !yourimages[2]" (click)="removeImage(4)" src="../../../assets/images/removeimage.png" alt="" class="image-controller">
+        <img *ngIf="!yourimages[4] && yourimages[3]" src="../../../assets/images/addimage.png" (click)="fileInput4.click()" alt="" class="image-controller">
+        </div>
+    </div>
+
+    <div class="images-wrapper">
+        <img [src]="yourimages[5]" *ngIf="yourimages[5]" alt="" class="image-fluid">
+        <div class="add-orremove-container">
+            <input
+            style="display: none"
+            type="file"
+            (change)="onFileChanged5($event)"
+            #fileInput5>
+            <img *ngIf="yourimages[5]" (click)="removeImage(3)" src="../../../assets/images/removeimage.png" alt="" class="image-controller">
+        <img *ngIf="!yourimages[5] && yourimages[4]"  src="../../../assets/images/addimage.png" (click)="fileInput5.click()" alt="" class="image-controller">
+        </div>
+    </div>
+
+
+
+   
+    <!-- <div class="images-wrapper">
+        <img [src]="yourimages[0]" *ngIf="yourimages[0]" alt="" class="image-fluid">
 
         <div class="add-orremove-container">
             <img src="../../../assets/images/removeimage.png" alt="" class="image-controller">
@@ -41,13 +123,13 @@
 
     <div class="images-wrapper">
         <div class="add-orremove-container">
-            <!-- <input
+             <input
                 style="display: none"
                 type="file" (change)="onFileChanged($event)"
                 #fileInput> -->
-            <img src="../../../assets/images/addimage.png"  alt="" class="image-controller">
+            <!-- <img src="../../../assets/images/addimage.png"  alt="" class="image-controller">
         </div>
-    </div>
+    </div> --> 
 
     
 </div>

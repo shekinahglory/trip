@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CommonService } from '../services/user.service.commonservice';
+import { DashboardService } from '../services/user.service.dashboardservice';
 import { JWTTokenService } from '../services/user.service.jwttokenservice';
 import { LocalStorageService } from '../services/user.service.localstorage';
 
@@ -18,10 +20,16 @@ export class DashboardComponent implements OnInit {
   editabout = false;
   deleteaccount = false;
   username:any = '';
+
+  profileImage = "/../assets/images/girl.JPG";
+
+  userImage= [];
+  userInfo = [];
   
 
   constructor(private router: Router, private localeStorage: LocalStorageService,
-              private jwtTokenService: JWTTokenService) { }
+              private jwtTokenService: JWTTokenService, private dashboardService: DashboardService,
+              private commonService: CommonService) { }
 
   ngOnInit(): void {
     
@@ -30,8 +38,15 @@ export class DashboardComponent implements OnInit {
     this.jwtTokenService.setToken(token);
     this.username = this.jwtTokenService.getUser();
     // let username:any = this.jwtTokenService.decodedToken.sub
-
-    console.log(this.jwtTokenService.isTokenExpired());
+// console.log(this.username);
+  this.dashboardService.getUserImages(this.username).subscribe(
+    data => {
+      console.log(data);
+      this.commonService.setUserService(data);
+      this.localeStorage.set('userinfo', data.username);
+      this.profileImage = data.imageUrl;
+    }
+  )
        
 
     if(this.router.url === '/dashboard/accountsettings' || this.router.url === '/dashboard/deleteaccount' 

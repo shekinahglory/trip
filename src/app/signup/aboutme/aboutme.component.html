@@ -18,7 +18,7 @@
                             <div class="col-md">
                                 <div class="form-group">
                                     <label for="" class="label">Looking for a  <span>*</span></label>
-                                    <select class="form-select" [(ngModel)]="lookingGender" aria-label="Selection one" aria-placeholder="Selection one">
+                                    <select class="form-select"  [(ngModel)]="lookingGender" aria-label="Selection one" aria-placeholder="Selection one">
                                 
                                         <option *ngFor="let gl of genderLookOptions">{{gl.name}}</option>
                                     </select>
@@ -29,10 +29,10 @@
                     <div class="row">
                         <div class="form-group">
                             <label for="" class="label">Where do you live? <span>*</span></label>
-                            <select class="form-select" [(ngModel)]="state" aria-label="Default select example">
+                            <select class="form-select" [(ngModel)]="state" aria-label="Default select example"  (change)="stateSelected(state)">
                                 
                             
-                                <option *ngFor="let st of stateList">{{st.name}}</option>
+                                <option *ngFor="let st of stateList"  >{{st.name}}</option>
                             </select>
                         </div>
                         <br>
@@ -85,10 +85,7 @@
                     <div class="row">
                         <input type="password" class="form-control" [(ngModel)]="password" placeholder="Choose your password">
                     </div>
-                    <hr>
 
-                   
-    
             </div>
     
             <div class="col-xl-7">
@@ -96,9 +93,8 @@
                     <h6 class="padding-left-md">Profile Photo</h6>
                 
                     <div class="container-grid">
-            
                                 <div class="images-wrapper">
-                                    <img [src]="yourimages[0]" alt="" class="image-fluid">
+                                    <img [src]="yourimages[0]" *ngIf="yourimages[0]" alt="" class="image-fluid">
 
                                     <div class="add-orremove-container">
                                         <input
@@ -112,7 +108,7 @@
                                 </div>
 
                                 <div class="images-wrapper">
-                                    <img [src]="yourimages[1]" alt="" class="image-fluid">
+                                    <img [src]="yourimages[1]" *ngIf="yourimages[1]" alt="" class="image-fluid">
                                     <div class="add-orremove-container">
                                         <input
                                         style="display: none"

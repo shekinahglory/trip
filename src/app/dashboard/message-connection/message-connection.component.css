@@ -66,8 +66,6 @@ h3, h4, h5, h6{
 
 /*  Connection part */
 
-
-
 .image-profile{
     display: inline-flex;
     margin-left: 20px;
@@ -79,13 +77,11 @@ h3, h4, h5, h6{
     
      height: 120px;
      width: 120px;
-     margin-left: 20px;
-     
-
+  
 }
 
 .aboutperson {
-    width: 400px;
+   padding-left: 20px;
 }
 
 .img-fluid2:hover{

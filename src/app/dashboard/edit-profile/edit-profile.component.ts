@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditProfileComponent implements OnInit {
 
+  userInfo = [];
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.userInfo);
   }
 
 }
