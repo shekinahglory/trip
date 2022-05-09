@@ -54,6 +54,7 @@ itemsListSmoker: Item[] = ITEMS_SMOKE;
     this.userInfo = this.localStorage.get('userinfo');
     this.dashboardService.getUserImages(this.userInfo).subscribe(
          data => {
+          this.state = data.state;
           this.city = data.city;
           this.about = data.about;
           this.interest = data.interest;

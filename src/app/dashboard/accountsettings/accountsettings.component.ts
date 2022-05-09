@@ -35,12 +35,13 @@ export class AccountsettingsComponent implements OnInit {
         console.log(data.imagesUrls)
        
         if(data.imagesUrls[0]){
-          this.yourimages[0] = "https://trippalimages.s3.us-east-2.amazonaws.com/1651509107886-shekinah";
-          console.log(data.imagesUrls[0].url);
+          this.yourimages[0] = data.imagesUrls[0].url;
+          // this.yourimages[0] = "https://trippalimages.s3.us-east-2.amazonaws.com/1651587899170-mwisa2";
+         
         }
         if(data.imagesUrls[1]){
-          this.yourimages[1] = "https://trippalimages.s3.us-east-2.amazonaws.com/1651509107883-shekinah";
-          console.log(data.imagesUrls[1].url);
+          this.yourimages[1] = data.imagesUrls[1].url;
+          
         }
         if(data.imagesUrls[2]){
           this.yourimages[2] = data.imagesUrls[2].url;

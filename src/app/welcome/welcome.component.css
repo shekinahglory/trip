@@ -1,19 +1,64 @@
 
 .btn {
     margin-top: 50px;
-    margin-right: 50px;
-    color: rgb(236, 42, 149);
-    background-color: rgb(242, 245, 247);
+   
+    color: rgb(248, 246, 247);
+    /* background-color: rgb(242, 245, 247); */
+    background-color: rgb(236, 42, 149);
+   
+   
 }
 .container-fluid{
 
     background-image: url(/../assets/images/girl.JPG);
     height: 100vh;
+    width: 100%;
+    filter: blur(5px);
     /* Center and scale the image nicely */
     /* background-position: center;*/
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover; 
+    overflow: hidden;
+   
+    
+}
+
+.profile{
+    
+}
+.container{
+   
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-weight: bold;
+    
+}
+.content {
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+  
+    color: white;
+    font-weight: bold;  
+    position: absolute;
+    border-radius: 30px;
+    top: 10%;
+    left: 20%;
+    width: 60%;
+    height: 80%;
+}
+
+.img-fluid{
+    width: 300px;
+    height: 300px;
+    align-items: center;
+    opacity: 0.2;
+    margin: auto 0;
 }
 
 .float-start{

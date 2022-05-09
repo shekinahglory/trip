@@ -22,6 +22,7 @@ export class AboutmeComponent implements OnInit {
   email='';
   password='';
   username='';
+  regularExpression = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   genderOptions = [
       {name: 'male', value:1},
@@ -32,14 +33,14 @@ export class AboutmeComponent implements OnInit {
     {name: 'female', value:2}
 ];
 
-stateList = [
+stateList:any = [
   {name:'Maryland', value:1},
   {name :'Pensylvania', value:2},
   {name:'New York', value:1},
   {name :'Chicago', value:2}
 ];
 
-cityList = [];
+cityList:any = [];
 
   
  selectedFile:any;
@@ -52,25 +53,65 @@ cityList = [];
  usernameError = false;
  enabled = true;
  emailEmpty = false;
+ emailValid = false;
+ genderEmpty = false;
+ lkgenderEmpty = false;
+ stateEmpty = false;
+ cityEmpty = false;
+ dateEmpty =false;
+ usernameEmpty = false;
+ passwordEmpty = false;
+ imageEmpty = false;
+ stateId = '';
 
- stateSelected(state:any){
-      console.log(state);
- }
+
   yourimages:any = [ ];
+
+  stateSelected(state:any){
+    let stateId = this.stateList[state].id;
+    let stateName = this.stateList[state].name
+    console.log(stateName)
+
+    this.userService.setState(stateName)
+    console.log(this.stateList[state].name)
+    this.backendService.getCities(stateId).subscribe(
+      data => {
+         this.cityList = data;
+      }
+    )
+}
 
   constructor(private router: Router, private userService: UserServiceService, 
     private imageService: ImageService
       , private backendService: ConnecAndSave) { }
 
   ngOnInit(): void {
+
+    this.backendService.getCountries().subscribe(
+      data => {
+        this.stateList = data;
+        this.backendService.getCities(this.stateList[0].id).subscribe(
+          data => {
+             this.cityList = data;
+          }
+        )
+      }
+    ); 
     
+  }
+
+  emFocusOut(event:any){
+    if(!this.regularExpression.test(String(event.target.value).toLocaleLowerCase())){
+           this.emailValid = true;
+    }
   }
 
 
   emailChanged(event:any){
-        const regularExpression = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-   console.log( regularExpression.test(String(event.target.value).toLowerCase()));
-   if(regularExpression.test(String(event.target.value).toLowerCase())){
+  
+   this.emailEmpty  =false;
+   if(this.regularExpression.test(String(event.target.value).toLowerCase())){
+     this.emailValid = false;
          this.backendService.checkEmail(event.target.value).subscribe(
               data => { 
                  console.log(data);
@@ -79,6 +120,7 @@ cityList = [];
                   console.log(data)
                 }else {
                   this.emailError = false;
+                  this.userService.setEmail(event.target.value)
                 }
               }
          )
@@ -87,24 +129,32 @@ cityList = [];
   }
 
   onUsernameChaged(event:any){
+    this.usernameEmpty = false;
     this.backendService.checkUsername(event.target.value).subscribe(
             data => {
               if(data === 'exist'){
                  this.usernameError = true;
               } else {
                 this.usernameError = false;
+                this.userService.setUsername(event.target.value);
+                this.imageService.setUsername(this.username);
               }
             }
     )
   }
 
-  onPasswordTyped(event:any){
-         
+  onPasswordTyped(event:any){     
+
+  }
+
+  birthdayInput(event:any){
+    this.userService.setDay(this.day);
 
   }
 
   onFileChanged(event:any){
     const reader = new FileReader();
+    this.imageEmpty = false
     this.selectedFile = event.target.files[0];
     // this.countImageFile++;
     this.imageService.setImageFirst(this.selectedFile);
@@ -168,40 +218,85 @@ cityList = [];
   }
 
   continue(){
+   
+    
+
+    if(!this.gender){
+       this.genderEmpty = true;
+    }
+    if(!this.lookingGender){
+      this.lkgenderEmpty = true;
+    }
+
+    if(!this.email){
+       this.emailEmpty = true;
+    }
+    if(!this.state){
+      this.stateEmpty = true;
+    }
+    if(!this.city){
+      this.cityEmpty = true;
+    }
+    if(!this.day){
+      this.dateEmpty= true;
+    }
+    if(!this.username){
+      this.usernameEmpty = true;
+    }
+    if(!this.password){
+      this.passwordEmpty = true;
+    }
+    if(!this.selectedFile){
+       this.imageEmpty = true;
+    }
 
 
+    console.log(this.userService.getState());
+    console.log(this.city);
 
+    if(this.email && this.lookingGender && this.username && this.password
+        && this.city && this.state && this.day && this.gender && this.selectedFile ){
+          this.router.navigateByUrl('signup/credentials')
+        } else {
 
-    this.userService.setGender(this.gender);
-    this.userService.setCity(this.city);
-    this.userService.setLookingFor(this.lookingGender);
-    this.userService.setState(this.state);
+        }
+    
+   
+    
+  }
+
+  stateChanged(){
+     this.stateEmpty = false;
+     this.userService.setState(this.state);
+  }
+
+  genderChanged(event:any){
+     this.genderEmpty = false;
+     this.userService.setGender(event.target.value);
+  }
+  lkgenderChanged(event:any){
+    this.lkgenderEmpty = false;
+    this.userService.setLookingFor(event.target.value);
+  }
+  cityChanged(event:any){
+    this.cityEmpty = false;
+    this.userService.setCity(event.target.value);
+  }
+  dateChanged(){
+    this.dateEmpty = false;
     this.userService.setDay(this.day);
-    this.userService.setEmail(this.email);
-    this.userService.setPassword(this.password);
-    this.userService.setUsername(this.username);
-    this.userService.setYear(this.year);
-    this.userService.setMonth(this.month);
-    this.imageService.setUsername(this.username);
-    
-    this.router.navigateByUrl('signup/credentials');
-
-    this.backendService.checkUsername(this.username).subscribe(
-       data => {
-          if(data === 'exist'){
-             this.usernameError = true;
-
-          } else {
-          
-          }
-       }
-    )
-
-    
+  }
+  passwordChanged(){
+     this.passwordEmpty = false;
+     this.userService.setPassword(this.password)
   }
 
   check(){
     console.log(this.gender);
+  }
+
+  singin(){
+    this.router.navigateByUrl("/login")
   }
 
 }

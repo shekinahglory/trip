@@ -14,9 +14,7 @@ export class UserServiceService {
       private email?:string;
       private username?:string;
       private password?:string;
-      private month?:number;
-      private day?:number;
-      private year?:number;
+      private birthDate?:number;
       private drinker?:string;
       private smoker?:string;
       private about?:string;
@@ -102,26 +100,16 @@ export class UserServiceService {
         return this.smoker + '';
       }
 
-      public setMonth(month:number){
-        this.month = month;
-      }
-      public getMonth(){
-        return this.month;
-      }
+     
 
       public setDay(day:number){
-        this.day = day;
+        this.birthDate = day;
       }
       public getDay(){
-        return this.day;
+        return this.birthDate;
       }
 
-      public setYear(year:number){
-        this.year = year;
-      }
-      public getYear(){
-        return this.year;
-      }
+    
 
       public setEmail(email:string){
         this.email = email;

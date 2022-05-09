@@ -1,14 +1,16 @@
 
-
+<div class="container-fluid"></div>
 <div class="container-bg">
-    <div class="container container-fluid">
+    <div class="container">
         <div class="row pt-5">
             <div class="col-xl-5">
                         <div class="row">
                             <div class="col-md">
                                 <div class="form-group">
                                     <label for="" class="label">You are a  <span>*</span></label>
-                                    <select class="form-select" [(ngModel)]="gender" aria-label="Selection one"  aria-placeholder="Selection one">
+                                    <select class="form-select" [ngClass]="{'error-input-border' : genderEmpty}" 
+                                    (input)="genderChanged($event)" 
+                                    [(ngModel)]="gender" aria-label="Selection one"  aria-placeholder="Selection one">
                                 
                                         <option *ngFor="let g of genderOptions">{{g.name}}</option>
                                     
@@ -18,8 +20,9 @@
                             <div class="col-md">
                                 <div class="form-group">
                                     <label for="" class="label">Looking for a  <span>*</span></label>
-                                    <select class="form-select"  [(ngModel)]="lookingGender" aria-label="Selection one" aria-placeholder="Selection one">
-                                
+                                    <select class="form-select" [ngClass]="{'error-input-border': lkgenderEmpty}" 
+                                     (input)="lkgenderChanged($event)"
+                                     [(ngModel)]="lookingGender" aria-label="Selection one" aria-placeholder="Selection one">
                                         <option *ngFor="let gl of genderLookOptions">{{gl.name}}</option>
                                     </select>
                                 </div>
@@ -28,63 +31,75 @@
 
                     <div class="row">
                         <div class="form-group">
-                            <label for="" class="label">Where do you live? <span>*</span></label>
-                            <select class="form-select" [(ngModel)]="state" aria-label="Default select example"  (change)="stateSelected(state)">
-                                
-                            
-                                <option *ngFor="let st of stateList"  >{{st.name}}</option>
+                            <label for="" class="label">Your Location? <span>*</span></label>
+                            <select class="form-select" [(ngModel)]="state" (input)="stateChanged()"
+                            [ngClass]="{'error-input-border' : stateEmpty}"
+                             aria-label="Default select example" 
+                             (change)="stateSelected(state)">
+                                <option *ngFor="let st of stateList; let i = index" [value]="i" >{{st.name}}</option>
                             </select>
                         </div>
                         <br>
                         <br>
-                        <hr>
+                        <br>
                         <div class="form-group">
-                        <input type="text" [(ngModel)]="city" class="form-control" placeholder="City">
+
+                            <select  [(ngModel)]="city" class="form-select"
+                               [ngClass]="{'error-input-border': cityEmpty}"
+                               (input)="cityChanged($event)"
+                            >
+                                 <option *ngFor="let city of cityList"> {{city.name}}</option>
+                            </select>
                         </div>
                     </div>
-                    <hr>
+                   
                     <h6>Date of birth <span>*</span></h6>
                     <div class="row">
-                        <div class="col-md-4">
+                       
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <label for="">Month</label>
-                                <input type="text" [(ngModel)]="month" class="form-control" placeholder="mm">
+                                <input type="date" value="2006-11-31"   max="2006-12-31" 
+                                [ngClass]="{'error-input-border': dateEmpty}"
+                                (input)="dateChanged()"
+                                (change)="birthdayInput($event)" [(ngModel)]="day" class="form-control" required>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="">Day</label>
-                                <input type="text" [(ngModel)]="day" class="form-control" placeholder="dd">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="">Year</label>
-                                    <input type="text" [(ngModel)]="year" class="form-control" placeholder="yyyy">
-                                
-                                </div>
-                        </div>
+                
                         <br>
-                        <p class=" text-muted d-flex justify-content-center">Your date of birth will be used to calculate your age.</p>
+                        <p class=" text-muted mut d-flex justify-content-center">Your date of birth will be used to calculate your age.</p>
                     </div>
 
                     <div class="row">
                         <div class="form-group">
-                            <input type="email" [ngClass]="{'error-input-border' : emailEmpty}" [(ngModel)]="email" (input)="emailChanged($event)" class="form-control" placeholder="email address ">
+                            <input type="email" [ngClass]="{'error-input-border' : emailEmpty}" [(ngModel)]="email" (focusout)="emFocusOut($event)" (input)="emailChanged($event)" class="form-control" placeholder="email address ">
                         </div>
-                        <p class=" text-muted d-flex justify-content-center">Your email address remain PRIVATE.</p>
+                        <p class=" text-muted mut d-flex justify-content-center">Your email address remain PRIVATE.</p>
                         <p class="error" *ngIf="emailError">Email already exist</p>
+                        <p class="error" *ngIf="emailValid">enter valid email</p>
+
                     </div>
                     <div class="row">
-                        <div class="form-group">
-                        <input type="text" [(ngModel)]="username" class="form-control" (input)="onUsernameChaged($event)" placeholder="Choose Your Username">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" [(ngModel)]="username" class="form-control" 
+                                [ngClass]="{'error-input-border': usernameEmpty}"
+                                (input)="onUsernameChaged($event)" placeholder="Choose Your Username">
+                                    </div>
+                                    <p class=" text-muted mut d-flex justify-content-center">Minimum 4 characters.</p>
+                                    <p class="error" *ngIf="usernameError">Username already exist!</p>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="password" class="form-control" [(ngModel)]="password"
+                                [ngClass]="{'error-input-border': passwordEmpty}"
+                                (input)="passwordChanged()" 
+                                placeholder="Choose your password">
                             </div>
-                            <p class=" text-muted d-flex justify-content-center">No spaces, brackets or quotes Minimum 4 characters.</p>
-                            <p class="error" *ngIf="usernameError">Username already exist!</p>
+                           
+                        </div>
+                    
                     </div>
-                    <div class="row">
-                        <input type="password" class="form-control" [(ngModel)]="password" placeholder="Choose your password">
-                    </div>
+                   
 
             </div>
     
@@ -93,10 +108,12 @@
                     <h6 class="padding-left-md">Profile Photo</h6>
                 
                     <div class="container-grid">
-                                <div class="images-wrapper">
+                                <div class="images-wrapper"
+                                [ngClass]="{'error-input-border': imageEmpty }"
+                                >
                                     <img [src]="yourimages[0]" *ngIf="yourimages[0]" alt="" class="image-fluid">
 
-                                    <div class="add-orremove-container">
+                                    <div class="add-orremove-container"  >
                                         <input
                                         style="display: none"
                                         type="file"
@@ -178,18 +195,20 @@
                         </div>
 
                         <div class="d-flex justify-content-center">
-                            <p class="lead">Add at least 2 photos to continue</p>
+                            <p class="lead">Add at least 1 photo to continue</p>
                         </div>
                 </div>
         
             </div>
 
         </div>
-    </div>
-    <div class="row">
         <div class="d-flex justify-content-center">
+
+            <button class="btn" (click)="singin()" >SIGN IN</button>
             <button class="btn" (click)="continue()" >CONTINUE</button>
+           
         </div>   
-       
     </div>
+       
+   
 </div>

@@ -1,4 +1,8 @@
 
+:root {
+    --trippal-color : rgb(195, 88, 108);
+}
+
 .first-row{
    display: flex;
    justify-content: center;
@@ -8,7 +12,7 @@
 }
 
 h4 {
-    color: rgb(195, 88, 108);
+    color: var(--trippal-color);
 }
 
 
@@ -38,5 +42,11 @@ h4 {
 }
 
 .btn {
-    background-color: rgb(195, 88, 108);
+    background-color: var(--trippal-color);
+}
+
+
+.inputStyleBottom {
+    border: none;
+    border-bottom: 2px solid rgba(195, 88, 108, 0.6) ;
 }

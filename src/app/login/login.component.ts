@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
           this.loginService.loginUser(this.email, this.password).subscribe(
                
                data => {
-                 
+                 this.localeStore.remove('token')
                  this.localeStore.set('token', data.access_token);
                  this.router.navigateByUrl("/dashboard");
                },
