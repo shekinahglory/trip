@@ -25,12 +25,12 @@ export class AboutmeComponent implements OnInit {
   regularExpression = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   genderOptions = [
-      {name: 'male', value:1},
-      {name: 'female', value:2}
+      {id: 0,name: 'male', genderId: 10},
+      { id: 1,name: 'female', genderId: 11}
   ];
   genderLookOptions = [
-    {name: 'male', value:1},
-    {name: 'female', value:2}
+    {name: 'male', id: 1},
+    {name: 'female', id:2}
 ];
 
 stateList:any = [
@@ -86,10 +86,13 @@ cityList:any = [];
       , private backendService: ConnecAndSave) { }
 
   ngOnInit(): void {
+     
+    
 
     this.backendService.getCountries().subscribe(
       data => {
         this.stateList = data;
+       
         this.backendService.getCities(this.stateList[0].id).subscribe(
           data => {
              this.cityList = data;

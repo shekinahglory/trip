@@ -45,7 +45,7 @@ export class SkillsComponent implements OnInit {
                       
                     }, 
                     error => {
-
+                        console.log(error);
                     },
                     () => {
                       if(this.imageService.getSecond() != null){
@@ -59,7 +59,7 @@ export class SkillsComponent implements OnInit {
                           
                           },
                           error => {
-
+                            console.log(error);
                           },
                           () => {
                             if(this.imageService.getThird() != null){
@@ -81,9 +81,6 @@ export class SkillsComponent implements OnInit {
                     }
                   );
                  
-               
-            
-             
             
                   // if(this.imageService.getFourth() != null){
                   //   const imageDataSec = new FormData();
@@ -132,6 +129,7 @@ export class SkillsComponent implements OnInit {
                 },
                 () => {
                   const token = this.localStorage.get('token');
+                  console.log(token)
                   if(token){
                     this.router.navigateByUrl("/accountcreated");
                   } else {
@@ -143,11 +141,6 @@ export class SkillsComponent implements OnInit {
               );
             console.log(this.userSaved); 
 
-            this.saveService.saveUser("").subscribe(
-              da => {
-
-              },
-            )
 
   }
 

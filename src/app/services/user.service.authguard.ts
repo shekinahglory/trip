@@ -25,7 +25,7 @@ export class AuthorizeGuard implements CanActivate{
       this.jwtservice.setToken(token);
        
          if(this.jwtservice.isTokenExpired()){
-                // this.localStorage.remove('token');
+                this.localStorage.remove('token');
                 console.log(true);
                 return  this.router.navigateByUrl("/login");
          } else  {
