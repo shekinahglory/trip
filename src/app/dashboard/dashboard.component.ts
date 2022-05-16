@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { CommonService } from '../services/user.service.commonservice';
-import { DashboardService } from '../services/user.service.dashboardservice';
 import { JWTTokenService } from '../services/user.service.jwttokenservice';
 import { LocalStorageService } from '../services/user.service.localstorage';
 
@@ -12,24 +10,34 @@ import { LocalStorageService } from '../services/user.service.localstorage';
 })
 export class DashboardComponent implements OnInit {
 
-  
 
   rightSideContent = 1;
-
   accountsetting = true;
   editabout = false;
   deleteaccount = false;
   username:any = '';
+  profileImage = '/../assets/images/girl.JPG';
+  mesconpage = 1;
+  isSelected = true;
+  notSelected = false;
 
-  profileImage = "/../assets/images/girl.JPG";
-
-  userImage= [];
-  userInfo = [];
+  @ViewChild("mescon") messCon: ElementRef | undefined;
   
 
   constructor(private router: Router, private localeStorage: LocalStorageService,
-              private jwtTokenService: JWTTokenService, private dashboardService: DashboardService,
-              private commonService: CommonService) { }
+              private jwtTokenService: JWTTokenService) { }
+
+  openPage(val : any){
+     
+    if(this.isSelected == true){
+      this.isSelected = false;
+      this.mesconpage = 2;
+    } else {
+      this.isSelected = true;
+      this.mesconpage = 1;
+    }
+
+  }
 
   ngOnInit(): void {
     
@@ -38,15 +46,8 @@ export class DashboardComponent implements OnInit {
     this.jwtTokenService.setToken(token);
     this.username = this.jwtTokenService.getUser();
     // let username:any = this.jwtTokenService.decodedToken.sub
-// console.log(this.username);
-  this.dashboardService.getUserImages(this.username).subscribe(
-    data => {
-      console.log(data);
-      this.commonService.setUserService(data);
-      this.localeStorage.set('userinfo', data.username);
-      this.profileImage = data.imageUrl;
-    }
-  )
+
+    console.log(this.jwtTokenService.isTokenExpired());
        
 
     if(this.router.url === '/dashboard/accountsettings' || this.router.url === '/dashboard/deleteaccount' 
