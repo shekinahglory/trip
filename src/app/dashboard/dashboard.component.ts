@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { DashboardService } from '../services/user.service.dashboardservice';
 import { JWTTokenService } from '../services/user.service.jwttokenservice';
 import { LocalStorageService } from '../services/user.service.localstorage';
 
@@ -16,7 +17,7 @@ export class DashboardComponent implements OnInit {
   editabout = false;
   deleteaccount = false;
   username:any = '';
-  profileImage = '/../assets/images/girl.JPG';
+  profileImage = '';
   mesconpage = 1;
   isSelected = true;
   notSelected = false;
@@ -25,7 +26,7 @@ export class DashboardComponent implements OnInit {
   
 
   constructor(private router: Router, private localeStorage: LocalStorageService,
-              private jwtTokenService: JWTTokenService) { }
+              private jwtTokenService: JWTTokenService, private dashboardService: DashboardService) { }
 
   openPage(val : any){
      
@@ -39,6 +40,10 @@ export class DashboardComponent implements OnInit {
 
   }
 
+  changeStyle($event:any){
+      
+  }
+
   ngOnInit(): void {
     
 
@@ -47,7 +52,14 @@ export class DashboardComponent implements OnInit {
     this.username = this.jwtTokenService.getUser();
     // let username:any = this.jwtTokenService.decodedToken.sub
 
-    console.log(this.jwtTokenService.isTokenExpired());
+    
+    this.dashboardService.getUserImages(this.username).subscribe(
+        data => {
+          console.log(data);
+          this.localeStorage.set('userinfo', data.username);
+          this.profileImage = data.imageUrl;
+        }
+    )
        
 
     if(this.router.url === '/dashboard/accountsettings' || this.router.url === '/dashboard/deleteaccount' 

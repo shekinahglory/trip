@@ -5,11 +5,13 @@
     background-color: rgb(195, 88, 108);
     height: 15%;
     border-bottom-right-radius: 110px;
+    box-shadow: 0 5px 10px rgba(244, 243, 243, 0.4);
 }
 
 .left-page{
     background: rgb(32, 34, 46);
     min-height: 100vh;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.4);
     
 }
 
@@ -153,7 +155,7 @@ p,h1 {
 
 .grid {
     display: grid;
-    grid-template-columns: 30% 60%;
+    grid-template-columns: 32% 68%;
     overflow: hidden;
 }
 
