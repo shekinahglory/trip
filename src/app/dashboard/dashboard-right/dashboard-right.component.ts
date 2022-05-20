@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { element } from 'protractor';
 
 @Component({
@@ -25,7 +25,7 @@ export class DashboardRightComponent {
 
   @Input() controls = true;
 
-  // element: HTMLElement = document.getElementById("userinfo");
+  
 
   constructor(private renderer: Renderer2) { }
 
@@ -68,16 +68,16 @@ export class DashboardRightComponent {
   showUserInfo(){
 
 
-     let element:HTMLElement = new HTMLElement();
-    //  element = document.getElementById("userinfo");
-    //  this.element.style.top = '0px';
-     this.renderer.setStyle(element, 'top', '-400px');
+     const el: HTMLElement | null = document.getElementById("userinfo");
+     this.renderer.setStyle(el, 'top', '0px');
+     console.log('working');
+    
 
   }
 
   remoteUserInfo(){
-    // const el:HTMLElement = document.getElementById("userinto");
-    // this.renderder.setStyle(el, 'top', '-400px');
+    const el:HTMLElement | null = document.getElementById("userinfo");
+    this.renderer.setStyle(el, 'top', '-400px');
   }
 
 }
