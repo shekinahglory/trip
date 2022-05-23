@@ -173,7 +173,7 @@
                                         type="file"
                                         (change)="onFileChanged4($event)"
                                         #fileInput4>
-                                        <img *ngIf="yourimages[4] && !yourimages[2]" (click)="removeImage(4)" src="../../../assets/images/removeimage.png" alt="" class="image-controller">
+                                        <img *ngIf="yourimages[4] && !yourimages[5]" (click)="removeImage(4)" src="../../../assets/images/removeimage.png" alt="" class="image-controller">
                                     <img *ngIf="!yourimages[4] && yourimages[3]" src="../../../assets/images/addimage.png" (click)="fileInput4.click()" alt="" class="image-controller">
                                     </div>
                                 </div>
@@ -186,7 +186,7 @@
                                         type="file"
                                         (change)="onFileChanged5($event)"
                                         #fileInput5>
-                                        <img *ngIf="yourimages[5]" (click)="removeImage(3)" src="../../../assets/images/removeimage.png" alt="" class="image-controller">
+                                        <img *ngIf="yourimages[5]" (click)="removeImage(5)" src="../../../assets/images/removeimage.png" alt="" class="image-controller">
                                     <img *ngIf="!yourimages[5] && yourimages[4]"  src="../../../assets/images/addimage.png" (click)="fileInput5.click()" alt="" class="image-controller">
                                     </div>
                                 </div>

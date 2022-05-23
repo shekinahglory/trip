@@ -40,7 +40,12 @@ export class SkillsComponent implements OnInit {
                   this.saveService.saveImage(imageData).subscribe(
                     firstToken => {
                       if(this.imageService.getSecond() == null){
+<<<<<<< HEAD
                         this.localStorage.set("token",firstToken);  
+=======
+                        this.localStorage.set("token",firstToken);
+                        this.afterSignUp(firstToken);
+>>>>>>> 0652cbf44573287b44fbed0fa35d54a72f7051ac
                       }
                       
                     }, 
@@ -55,6 +60,7 @@ export class SkillsComponent implements OnInit {
                           data => {
                             if(this.imageService.getThird() == null){
                               this.localStorage.set("token",data);
+                              this.afterSignUp(data);
                             }
                           
                           },
@@ -70,6 +76,64 @@ export class SkillsComponent implements OnInit {
                                   if(this.imageService.getFourth() == null){
                                     this.localStorage.set("token",data);
                                   }      
+                                },
+                                error => {
+                                  console.log(error);
+                                },
+                                () => {
+                                   
+                                      if(this.imageService.getFourth() != null){
+                                        const imageDataSec = new FormData();
+                                        imageDataSec.append('file', this.imageService.getFourth(), data);
+                                        this.saveService.saveImage(imageDataSec).subscribe(
+                                          data => {
+                                            if(this.imageService.getFirst() == null){
+                                              this.localStorage.set("token",data);
+                                              this.afterSignUp(data);
+                                            }        
+                                          
+                                          },
+                                          error => {
+                                            console.log(error);
+                                           },
+                                          () => {
+                                            if(this.imageService.getFith() != null){
+                                              const imageDataSec = new FormData();
+                                              imageDataSec.append('file', this.imageService.getFith(), data);
+                                              this.saveService.saveImage(imageDataSec).subscribe(
+                                                data => {
+                                                  if(this.imageService.getSix == null){
+                                                    this.localStorage.set("token",data);
+                                                    this.afterSignUp(data)
+                                                  }           
+                                                },
+                                                error => {
+                                                   console.log(error);
+                                                },
+                                                () => {
+                                                  if(this.imageService.getSix() != null){
+                                                    const imageDataSec = new FormData();
+                                                    imageDataSec.append('file', this.imageService.getSix(), data);
+                                                    this.saveService.saveImage(imageDataSec).subscribe(
+                                                      data => {
+                                                        this.localStorage.set("token",data);
+                                                        this.afterSignUp(data);
+                                                      
+                                                      }
+                                                    )
+                                            
+                                                  }
+
+                                                }
+                                              )
+                                      
+                                            }
+
+                                          }
+                                        )
+                                
+                                      }
+
                                 }
                               )
                       
@@ -80,68 +144,29 @@ export class SkillsComponent implements OnInit {
                       }
                     }
                   );
-                 
-            
-                  // if(this.imageService.getFourth() != null){
-                  //   const imageDataSec = new FormData();
-                  //   imageDataSec.append('file', this.imageService.getFourth(), data);
-                  //   this.saveService.saveImage(imageDataSec).subscribe(
-                  //     data => {
-                  //       if(this.imageService.getFirst() == null){
-                  //         this.localStorage.set("token",data);
-                  //       }        
-                      
-                  //     }
-                  //   )
-            
-                  // }
-            
-                  // if(this.imageService.getFith() != null){
-                  //   const imageDataSec = new FormData();
-                  //   imageDataSec.append('file', this.imageService.getFith(), data);
-                  //   this.saveService.saveImage(imageDataSec).subscribe(
-                  //     data => {
-                  //       if(this.imageService.getSix == null){
-                  //         this.localStorage.set("token",data);
-                  //       }           
-                  //     }
-                  //   )
-            
-                  // }
-            
-                  // if(this.imageService.getSix() != null){
-                  //   const imageDataSec = new FormData();
-                  //   imageDataSec.append('file', this.imageService.getSix(), data);
-                  //   this.saveService.saveImage(imageDataSec).subscribe(
-                  //     data => {
-                  //       this.localStorage.set("token",data);
-                      
-                  //     }
-                  //   )
-            
-                  // }
-
-                 
+                                 
                 },
                
                 error => {
                   console.log(error);
                 },
-                () => {
-                  const token = this.localStorage.get('token');
-                  console.log(token)
-                  if(token){
-                    this.router.navigateByUrl("/accountcreated");
-                  } else {
-                     alert('There was an error! Please check every thing and resubmit')
-                  }
-                 
-                },
+      
                
               );
-            console.log(this.userSaved); 
+           
 
 
+  }
+
+  afterSignUp(token:any){
+    
+    console.log(token)
+    if(token){
+      this.router.navigateByUrl("/accountcreated");
+    } else {
+       alert('There was an error! Please check every thing and resubmit')
+    }
+   
   }
 
   saveImages(username:any){

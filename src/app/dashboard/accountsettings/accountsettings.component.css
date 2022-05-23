@@ -26,6 +26,7 @@ p {
     height: 300px;
     background-color: blanchedalmond;
     border-radius: 18px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
 
 }
 

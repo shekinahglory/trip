@@ -16,6 +16,7 @@
     background-color: rgba(0, 0, 0, 0.4);
     position: absolute;
     border-radius: 30px;
+    box-shadow: 0 5px 10px rgba(239, 231, 231, 0.4);
     top: 1%;
     left: 1%;  
     width: 98%;
@@ -90,6 +91,7 @@ p, h1, h2, h3, h4, h6 {
     height: 30vh;
     background-color: blanchedalmond;
     border-radius: 18px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
 
 }
 

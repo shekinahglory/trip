@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { CommonService } from '../services/user.service.commonservice';
 import { DashboardService } from '../services/user.service.dashboardservice';
 import { JWTTokenService } from '../services/user.service.jwttokenservice';
 import { LocalStorageService } from '../services/user.service.localstorage';
@@ -12,41 +11,99 @@ import { LocalStorageService } from '../services/user.service.localstorage';
 })
 export class DashboardComponent implements OnInit {
 
-  
 
   rightSideContent = 1;
-
   accountsetting = true;
   editabout = false;
   deleteaccount = false;
   username:any = '';
+  profileImage = '';
+  mesconpage = 1;
+  isSelected = true;
+  notSelected = false;
+  mesconsmallscreenisSelected = false;
+  imgActivated = true;
+  stgsActivated = false;
+  dltActivated = false;
 
-  profileImage = "/../assets/images/girl.JPG";
+  mesconsmallscreen:any;
 
-  userImage= [];
-  userInfo = [];
+  @ViewChild("mescon") messCon: ElementRef | undefined;
   
 
   constructor(private router: Router, private localeStorage: LocalStorageService,
-              private jwtTokenService: JWTTokenService, private dashboardService: DashboardService,
-              private commonService: CommonService) { }
+              private jwtTokenService: JWTTokenService, private dashboardService: DashboardService) { }
+
+  openPage(val : any){
+     
+    if(this.isSelected == true){
+      this.isSelected = false;
+      this.mesconpage = 2;
+    } else {
+      this.isSelected = true;
+      this.mesconpage = 1;
+    }
+
+  }
+
+  openMessagePage(){
+     this.mesconsmallscreenisSelected = true;
+     this.isSelected = false;
+
+  }
+
+  changeStyle($event:any){
+      
+  }
 
   ngOnInit(): void {
+
+    
+    if(window.innerWidth >= 1150 && !(this.router.url === "/dashboard/accountsettings")
+       || !(this.router.url == "/dashboard/deleteaccount") || !("dashboard/editabout") ){
+      this.mesconsmallscreen = false;
+    } else {
+      this.mesconsmallscreen = true;
+    }
     
 
     let token:any = this.localeStorage.get('token');
     this.jwtTokenService.setToken(token);
     this.username = this.jwtTokenService.getUser();
-    // let username:any = this.jwtTokenService.decodedToken.sub
-// console.log(this.username);
-  this.dashboardService.getUserImages(this.username).subscribe(
-    data => {
-      console.log(data);
-      this.commonService.setUserService(data);
-      this.localeStorage.set('userinfo', data.username);
-      this.profileImage = data.imageUrl;
+   
+
+  
+    if(this.router.url === "/dashboard/accountsettings"){
+      this.mesconsmallscreen = false;
+ 
+      this.deleteaccount = false;
+      this.editabout = false;
+      this.accountsetting = true;
     }
-  )
+    if(this.router.url === "/dashboard/deleteaccount"){
+      this.mesconsmallscreen = false;
+
+      this.deleteaccount = true;
+      this.editabout = false;
+      this.accountsetting = false;
+
+    }
+    if(this.router.url === "dashboard/editabout"){
+      this.mesconsmallscreen = false;
+     
+      this.deleteaccount = false;
+      this.editabout = true;
+      this.accountsetting = false;
+
+    }
+    
+    this.dashboardService.getUserImages(this.username).subscribe(
+        data => {
+        
+          this.localeStorage.set('userinfo', data.username);
+          this.profileImage = data.imageUrl;
+        }
+    )
        
 
     if(this.router.url === '/dashboard/accountsettings' || this.router.url === '/dashboard/deleteaccount' 
@@ -79,13 +136,21 @@ export class DashboardComponent implements OnInit {
     if(this.rightSideContent == 1){
       this.rightSideContent = 2;
       this.router.navigateByUrl("/dashboard/accountsettings")
+      this.mesconsmallscreen = false;
     } else {
+      this.mesconsmallscreen = true;
       this.rightSideContent = 1;
       this.router.navigateByUrl("/dashboard")
     }
     
     
    
+  }
+
+  peopleButtonClicked(){
+     this.mesconsmallscreen = true;
+     this.isSelected = true;
+    //  this.router.navigateByUrl("/dashboard")
   }
 
   gotoDeleteaccount(){

@@ -4,7 +4,13 @@
 
 export class User{
 
-    constructor(private gender:string, private lookingFor:string, private state:string, private city:string) { }
+
+    private gender?:string;
+    private lookingFor?:string;
+     private state?:string;
+      private city?:string;
+
+    constructor() { }
 
 
 
@@ -24,17 +30,17 @@ export class User{
      }
    
      public getGender():string{
-       return this.gender;
+       return this.gender + '';
      }
      public getLookingFor():string{
-       return this.lookingFor;
+       return this.lookingFor + '';
      }
      public getState():string{
-       return this.state;
+       return this.state + '';
      }
    
      public getCity():string{
-       return this.city;
+       return this.city + '';
      }
     
 }

@@ -1,11 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-dashboard-right',
   templateUrl: './dashboard-right.component.html',
   styleUrls: ['./dashboard-right.component.css']
 })
-export class DashboardRightComponent implements OnInit {
+export class DashboardRightComponent {
 
   images = [
     "/../../assets/images/girl.JPG",
@@ -17,16 +18,18 @@ export class DashboardRightComponent implements OnInit {
 
   selectedIndex = 0;
 
+  
+  
+  
   @Input() indicators = true;
 
   @Input() controls = true;
 
   
 
-  constructor() { }
+  constructor(private renderer: Renderer2) { }
 
-  ngOnInit(): void {
-  }
+  
 
   selectedImage(index: number){
     this.selectedIndex = index;
@@ -60,6 +63,27 @@ export class DashboardRightComponent implements OnInit {
 
   pass(){
 
+  }
+
+  showUserInfo(){
+
+   
+    const el: HTMLElement | null = document.getElementById("userinfo");
+     if(window.innerWidth >= 1150){
+
+             this.renderer.setStyle(el, 'top', '0px');
+
+         } else {
+           this.renderer.setStyle(el, 'top', '100px')
+         }
+    
+    
+
+  }
+
+  remoteUserInfo(){
+    const el:HTMLElement | null = document.getElementById("userinfo");
+    this.renderer.setStyle(el, 'top', '-400px');
   }
 
 }

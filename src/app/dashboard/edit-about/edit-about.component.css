@@ -3,6 +3,12 @@
     --trippal-color : rgb(195, 88, 108);
 }
 
+.container {
+    margin: 5px 1px 5px 5px;
+    padding: 20px 5px 5px 15px;
+    text-align: center;
+}
+
 .first-row{
    display: flex;
    justify-content: center;
@@ -42,7 +48,9 @@ h4 {
 }
 
 .btn {
-    background-color: var(--trippal-color);
+    background-color: rgb(195, 88, 108);
+    color : white;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.4);
 }
 
 

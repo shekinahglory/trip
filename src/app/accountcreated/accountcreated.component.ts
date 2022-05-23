@@ -11,18 +11,14 @@ import { LoginService } from '../services/user.service.loginservice';
 })
 export class AccountcreatedComponent implements OnInit {
 
+  
+
   constructor(private jwtTokenService: JWTTokenService, private localStorage: LocalStorageService
     , private router: Router) { }
 
   ngOnInit(): void {
 
-    const token:any = this.localStorage.get("token");
-    console.log(token);
-    this.jwtTokenService.setToken(token);
-    console.log(this.jwtTokenService.getDecodeToken());
-    console.log(this.jwtTokenService.decodeToken())
-    console.log(this.jwtTokenService.isTokenExpired())
-    
+   
     
    
   }
