@@ -32,7 +32,6 @@ export class AccountsettingsComponent implements OnInit {
     this.dashboardService.getUserImages(this.userInfo).subscribe(
           
       data => {
-        console.log(data.imagesUrls)
        
         if(data.imagesUrls[0]){
           this.yourimages[0] = data.imagesUrls[0].url;

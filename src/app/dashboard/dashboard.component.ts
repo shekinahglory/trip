@@ -21,6 +21,12 @@ export class DashboardComponent implements OnInit {
   mesconpage = 1;
   isSelected = true;
   notSelected = false;
+  mesconsmallscreenisSelected = false;
+  imgActivated = true;
+  stgsActivated = false;
+  dltActivated = false;
+
+  mesconsmallscreen:any;
 
   @ViewChild("mescon") messCon: ElementRef | undefined;
   
@@ -40,22 +46,60 @@ export class DashboardComponent implements OnInit {
 
   }
 
+  openMessagePage(){
+     this.mesconsmallscreenisSelected = true;
+     this.isSelected = false;
+
+  }
+
   changeStyle($event:any){
       
   }
 
   ngOnInit(): void {
+
+    
+    if(window.innerWidth >= 1150 && !(this.router.url === "/dashboard/accountsettings")
+       || !(this.router.url == "/dashboard/deleteaccount") || !("dashboard/editabout") ){
+      this.mesconsmallscreen = false;
+    } else {
+      this.mesconsmallscreen = true;
+    }
     
 
     let token:any = this.localeStorage.get('token');
     this.jwtTokenService.setToken(token);
     this.username = this.jwtTokenService.getUser();
-    // let username:any = this.jwtTokenService.decodedToken.sub
+   
 
+  
+    if(this.router.url === "/dashboard/accountsettings"){
+      this.mesconsmallscreen = false;
+ 
+      this.deleteaccount = false;
+      this.editabout = false;
+      this.accountsetting = true;
+    }
+    if(this.router.url === "/dashboard/deleteaccount"){
+      this.mesconsmallscreen = false;
+
+      this.deleteaccount = true;
+      this.editabout = false;
+      this.accountsetting = false;
+
+    }
+    if(this.router.url === "dashboard/editabout"){
+      this.mesconsmallscreen = false;
+     
+      this.deleteaccount = false;
+      this.editabout = true;
+      this.accountsetting = false;
+
+    }
     
     this.dashboardService.getUserImages(this.username).subscribe(
         data => {
-          console.log(data);
+        
           this.localeStorage.set('userinfo', data.username);
           this.profileImage = data.imageUrl;
         }
@@ -92,13 +136,21 @@ export class DashboardComponent implements OnInit {
     if(this.rightSideContent == 1){
       this.rightSideContent = 2;
       this.router.navigateByUrl("/dashboard/accountsettings")
+      this.mesconsmallscreen = false;
     } else {
+      this.mesconsmallscreen = true;
       this.rightSideContent = 1;
       this.router.navigateByUrl("/dashboard")
     }
     
     
    
+  }
+
+  peopleButtonClicked(){
+     this.mesconsmallscreen = true;
+     this.isSelected = true;
+    //  this.router.navigateByUrl("/dashboard")
   }
 
   gotoDeleteaccount(){

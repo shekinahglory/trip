@@ -1,89 +1,92 @@
 
+<div class="container">
 
-<div class="first-row">
-    <div class="whereyoulive">
-        <h4>Your Location</h4>
-        <div class="form-group">
-            <input type="text" class="form-control inputStyleBottom" [placeholder]="state">
-            <br>
-           
-            <input type="text" class="form-control inputStyleBottom" [placeholder]="city">
+        <div class="first-row">
+            <div class="whereyoulive">
+                <h4>Your Location</h4>
+                <div class="form-group">
+                    <input type="text" class="form-control inputStyleBottom" [placeholder]="state">
+                    <br>
+                
+                    <input type="text" class="form-control inputStyleBottom" [placeholder]="city">
+                </div>
+            </div>
+
+            <div class="aboutme">
+                <h4>About Me</h4>
+                <div >
+                    <textarea class="form-control inputStyleBottom" name="" id="" cols="22" rows="3" [placeholder]="about"></textarea>
+                </div>
+            </div>
+
+            <div class="interest">
+                <h4>interest</h4>
+                <div >
+                    <textarea  class="form-control inputStyleBottom" name="" id="" cols="22" rows="3" [placeholder]="interest"></textarea>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div class="aboutme">
-        <h4>About Me</h4>
-        <div >
-            <textarea class="form-control inputStyleBottom" name="" id="" cols="22" rows="3" [placeholder]="about"></textarea>
+
+        <div class="second-row">
+            <div class="doyoudrink">
+                <h4>Do you drink ?</h4>
+                <div class="form-check" *ngFor="let item of itemsLists" >
+                    <input class="form-check-input"
+                    [(ngModel)]="radioSelecteds" name="list_name" value="{{item.value}}" (change)="onItemChanges(item)"
+                    type="radio" name="flexRadioDefault6" id="flexRadioDefault6"/>
+                    <label class="form-check-label" for="flexRadioDefault6"> {{item.name}} </label>
+                    <br><br>
+                </div>
+                
+            </div>
+
+            <div class="doyousmoke">
+                <h4>Do you Smoke ?</h4>
+                <div class="form-check" *ngFor="let item of itemsListSmoker" >
+                    <input class="form-check-input"   [(ngModel)]="radioSelectedSmoker"
+                    value="{{item.value}}" (change)="onItemChangeSmoker(item)"
+                    type="radio" name="flexRadioDefault1" id="flexRadioDefault1"/>
+                    <label class="form-check-label" for="flexRadioDefault1"> {{item.name}} </label>
+                    <br>
+                    <br>
+                </div>
+                
+            </div>
+
+            <div class="doyouhavekids">
+                <h4>Do you have kids ?</h4>
+                <div class="form-check" *ngFor="let item of itemsList | slice:0:3, let i=index">
+                    <input
+                    [(ngModel)]="radioSelected"
+                    value="{{item.value}}" (change)="onItemChange(item)"
+                    class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault"/>
+                    <label class="form-check-label" for="flexRadioDefault"> {{item.name}} </label>
+                    <br>
+                    <br>
+                </div>
+            </div>
+
+            <div class="doyouwantkids">
+                <h4>Do you want kids ?</h4>
+                <div class="form-check" *ngFor="let item of itemsListKids">
+                    <input
+                    [(ngModel)]="radioSelectedKid"
+                    value="{{item.value}}" (change)="onItemChangeKids(item)"
+                    class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2"/>
+                    <label class="form-check-label" for="flexRadioDefault2"> {{item.name}} </label>
+                    <br>
+                    <br>
+                </div>
+                <br>
+            </div>
+
+        
         </div>
-    </div>
 
-    <div class="interest">
-        <h4>interest</h4>
-        <div >
-            <textarea  class="form-control inputStyleBottom" name="" id="" cols="22" rows="3" [placeholder]="interest"></textarea>
+
+        <div class="btn-color">
+            <button class="btn">Save</button>
         </div>
-    </div>
-</div>
 
-
-<div class="second-row">
-    <div class="doyoudrink">
-        <h4>Do you drink ?</h4>
-        <div class="form-check" *ngFor="let item of itemsLists" >
-            <input class="form-check-input"
-            [(ngModel)]="radioSelecteds" name="list_name" value="{{item.value}}" (change)="onItemChanges(item)"
-            type="radio" name="flexRadioDefault6" id="flexRadioDefault6"/>
-            <label class="form-check-label" for="flexRadioDefault6"> {{item.name}} </label>
-            <br><br>
-          </div>
-         
-    </div>
-
-    <div class="doyousmoke">
-        <h4>Do you Smoke ?</h4>
-        <div class="form-check" *ngFor="let item of itemsListSmoker" >
-            <input class="form-check-input"   [(ngModel)]="radioSelectedSmoker"
-            value="{{item.value}}" (change)="onItemChangeSmoker(item)"
-            type="radio" name="flexRadioDefault1" id="flexRadioDefault1"/>
-            <label class="form-check-label" for="flexRadioDefault1"> {{item.name}} </label>
-            <br>
-            <br>
-          </div>
-          
-    </div>
-
-    <div class="doyouhavekids">
-        <h4>Do you have kids ?</h4>
-        <div class="form-check" *ngFor="let item of itemsList | slice:0:3, let i=index">
-            <input
-             [(ngModel)]="radioSelected"
-             value="{{item.value}}" (change)="onItemChange(item)"
-            class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault"/>
-            <label class="form-check-label" for="flexRadioDefault"> {{item.name}} </label>
-            <br>
-            <br>
-          </div>
-    </div>
-
-    <div class="doyouwantkids">
-        <h4>Do you want kids ?</h4>
-        <div class="form-check" *ngFor="let item of itemsListKids">
-            <input
-             [(ngModel)]="radioSelectedKid"
-             value="{{item.value}}" (change)="onItemChangeKids(item)"
-            class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2"/>
-            <label class="form-check-label" for="flexRadioDefault2"> {{item.name}} </label>
-            <br>
-            <br>
-          </div>
-          <br>
-    </div>
-
-   
-</div>
-
-
-<div class="btn-color">
-    <button class="btn">Save</button>
 </div>

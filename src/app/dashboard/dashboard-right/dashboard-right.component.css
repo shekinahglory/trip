@@ -220,6 +220,20 @@ p {
     .container {
        
     }
+
+    .profiler {
+       position: absolute;
+
+       top: 600px;
+       /* bottom: 0; */
+       /* left: 10px; */
+    }
+
+    .profiler p {
+      color: blue;
+    }
+
+    .material-icons.md-48 { font-size: 48px; color: blue; }
 }
 
 

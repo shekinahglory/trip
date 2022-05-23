@@ -67,10 +67,16 @@ export class DashboardRightComponent {
 
   showUserInfo(){
 
+   
+    const el: HTMLElement | null = document.getElementById("userinfo");
+     if(window.innerWidth >= 1150){
 
-     const el: HTMLElement | null = document.getElementById("userinfo");
-     this.renderer.setStyle(el, 'top', '0px');
-     console.log('working');
+             this.renderer.setStyle(el, 'top', '0px');
+
+         } else {
+           this.renderer.setStyle(el, 'top', '100px')
+         }
+    
     
 
   }

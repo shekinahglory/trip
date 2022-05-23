@@ -1,12 +1,8 @@
 <div class="container-fluid g-0">
-
     <div class="row g-0">
-
         <div class="grid">
-
-
             <div class="left-page">
-                <div class="header g-0">
+                <div class="header">
 
                     <div class="column">
                         
@@ -17,6 +13,24 @@
                     <div class="column2">
                         <p class="h5" (click)="logout()"> <span> {{username}}</span> </p>
                     </div>
+                    
+                    <div class="column3">
+                        <nav class="navbar" *ngIf="mesconsmallscreen == true">
+                            <ul #mescon>
+                                <li id="messages" 
+                                [ngClass]="{activ: isSelected == false}"
+                                 (click)="openMessagePage()">
+                                    
+                                   <button>Message & Connection</button>
+                                </li>
+                                <li id="people"  [ngClass]="{activ: isSelected == true}" (click)="peopleButtonClicked()">
+                                    <button>People</button>
+                                </li>
+                            </ul>
+                            
+                        </nav> 
+                    </div>
+
                 </div>
                 <!-- <app-message-connection *ngIf="rightSideContent == 1"></app-message-connection> -->
 
@@ -82,9 +96,33 @@
                 </div>
                 
             </div>
-            <div class="">
-
-                <router-outlet></router-outlet>
+            <div class="bottom-page">
+               
+                <div class="icon-control" >
+                    <div class="profiler" *ngIf="mesconsmallscreen == false">
+                        <button class="btn-edit">
+                            <i class="material-icons md-48 image" 
+                            (click)="gotoProfileImages()"
+                            [ngClass]="{'image-active': accountsetting}">image</i>
+                       </button>
+                       <button class="btn-edit">
+                            <i class="material-icons md-48 settings" 
+                            (click)="gotoAbout()"
+                            [ngClass]="{'image-active': editabout}">settings</i>
+                       </button>
+                       
+                       <button class="btn-edit">
+                            <i class="material-icons md-48 delete" 
+                            (click)="gotoDeleteaccount()"
+                            [ngClass]="{'image-active': deleteaccount}">delete</i>
+                       </button>
+                      
+                    </div>
+                </div>
+                <div class="route-outlet">
+                    <router-outlet></router-outlet>
+                </div>
+               
                 
             </div>
     </div>
