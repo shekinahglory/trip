@@ -28,7 +28,7 @@ export class SkillsComponent implements OnInit {
   next(){
 
     this.userService.setJob("C.E.O");
-    this.userService.setIncome("4000000");
+    this.userService.setIncome("4000000$");
     this.userService.setEducation("Bachelors");
 
     this.saveService.saveUser(this.userService)
@@ -40,7 +40,7 @@ export class SkillsComponent implements OnInit {
                   this.saveService.saveImage(imageData).subscribe(
                     firstToken => {
                       if(this.imageService.getSecond() == null){
-                        this.localStorage.set("token",firstToken);
+                        this.localStorage.set("token",firstToken);  
                       }
                       
                     }, 

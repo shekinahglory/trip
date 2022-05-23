@@ -1,7 +1,9 @@
 
 .btn {
     margin-top: 50px;
-   
+    display: inline-block;
+    font-size:  18px;
+    width: 100%;
     color: rgb(248, 246, 247);
     /* background-color: rgb(242, 245, 247); */
     background-color: rgb(236, 42, 149);
@@ -24,14 +26,18 @@
     
 }
 
-.profile{
+.login, .create{
+
+    /* background-color: aqua; */
     
 }
 .container{
    
     width: 100%;
     height: 100%;
-    display: flex;
+    /* display: flex; */
+    display: grid;
+    grid-template-columns: 18% 60% 18%;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -70,6 +76,47 @@
 .float-start .btn {
     color: rgb(242, 245, 247);
     background-color: rgb(236, 42, 149);
+}
+@media(max-width: 918px){
+    .btn {
+        font-size: 16px;
+      
+    }
+}
+
+@media(max-width: 840px){
+    .btn {
+        font-size: 13px;
+      
+    }
+}
+
+@media(max-width: 740px){
+    .btn {
+        font-size: 10px;
+      
+    }
+}
+
+@media(max-width: 734px){
+    .btn {
+        font-size: 8px;
+      
+    }
+}
+
+@media(max-width: 560px){
+    .btn {
+        font-size: 7px;
+      
+    }
+}
+
+@media(max-width: 528px){
+    .btn {
+        font-size: 10px;
+      
+    }
 }
 
 

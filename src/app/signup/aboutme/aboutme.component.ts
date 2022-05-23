@@ -70,10 +70,10 @@ cityList:any = [];
   stateSelected(state:any){
     let stateId = this.stateList[state].id;
     let stateName = this.stateList[state].name
-    console.log(stateName)
+  
 
     this.userService.setState(stateName)
-    console.log(this.stateList[state].name)
+   
     this.backendService.getCities(stateId).subscribe(
       data => {
          this.cityList = data;
