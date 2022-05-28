@@ -60,9 +60,11 @@ export class DashboardComponent implements OnInit {
 
     
     if(window.innerWidth >= 1150 && !(this.router.url === "/dashboard/accountsettings")
-       || !(this.router.url == "/dashboard/deleteaccount") || !("dashboard/editabout") ){
+       || !(this.router.url == "/dashboard/deleteaccount") || !("dashboard/editabout") 
+       ){
       this.mesconsmallscreen = false;
     } else {
+     
       this.mesconsmallscreen = true;
     }
     
@@ -110,6 +112,8 @@ export class DashboardComponent implements OnInit {
     ||  this.router.url === '/dashboard/editabout'
     ){
       this.rightSideContent = 2;
+    } else {
+      this.mesconsmallscreen = true;
     }
 
     if(this.router.url === '/dashboard/deleteaccount'){

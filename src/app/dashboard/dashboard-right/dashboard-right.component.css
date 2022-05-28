@@ -28,23 +28,10 @@ p {
 
 /* Carousel image */
 
-<<<<<<< HEAD
-.carousel-wrapper{
-  
-  position: relative;
-  margin: auto;
-  text-align: center;
-  width: 500px;
- 
-  border-bottom-left-radius: 120px;
-  border-bottom-right-radius: 120px;
-
-=======
 .container{
   margin-top: 50px;
   display: flex;
   justify-content: center;
->>>>>>> 0652cbf44573287b44fbed0fa35d54a72f7051ac
 }
 
 
@@ -53,14 +40,10 @@ p {
   display: flex;
   margin-top: 10%;
   width: 100%;
-<<<<<<< HEAD
-  height: 400px;
-=======
   height:600px;
   /* max-height: 40vh; */
   justify-content: center;
   text-align: center;
->>>>>>> 0652cbf44573287b44fbed0fa35d54a72f7051ac
  
 
  

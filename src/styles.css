@@ -15,15 +15,19 @@ body { margin: 0;
    scrollbar-color: red;
 }
 body::-webkit-scrollbar {
-    width: 12px;               /* width of the entire scrollbar */
+    width: 12px;               /* width of the entire scrollbar */  
   }
   body::-webkit-scrollbar-track {
-    background: orange;        /* color of the tracking area */
+    /* background: rgb(195, 88, 108);   */
+    opacity: 0.4;
+          /* color of the tracking area */
   }
   body::-webkit-scrollbar-thumb {
-    background-color: blue;    /* color of the scroll thumb */
-    border-radius: 20px;       /* roundness of the scroll thumb */
-    border: 3px solid orange;  /* creates padding around scroll thumb */
+    background-color: rgb(195, 88, 108);    /* color of the scroll thumb */
+    border-radius: 8px;       /* roundness of the scroll thumb */
+    /* border: 1px solid rgb(195, 88, 108);  */
+     /* creates padding around scroll thumb */
+    opacity: 0.4;
   }
 
 p {

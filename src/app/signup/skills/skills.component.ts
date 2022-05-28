@@ -40,12 +40,8 @@ export class SkillsComponent implements OnInit {
                   this.saveService.saveImage(imageData).subscribe(
                     firstToken => {
                       if(this.imageService.getSecond() == null){
-<<<<<<< HEAD
-                        this.localStorage.set("token",firstToken);  
-=======
                         this.localStorage.set("token",firstToken);
                         this.afterSignUp(firstToken);
->>>>>>> 0652cbf44573287b44fbed0fa35d54a72f7051ac
                       }
                       
                     }, 
