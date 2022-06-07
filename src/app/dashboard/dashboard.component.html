@@ -20,7 +20,7 @@
                                 [ngClass]="{activ: isSelected == false}"
                                  (click)="openMessagePage()">
                                     
-                                   <button>Message & Connection</button>
+                                   <button>Messages & Connections</button>
                                 </li>
                                 <li id="people"  [ngClass]="{activ: isSelected == true}" (click)="peopleButtonClicked()">
                                     <button>People</button>
@@ -34,46 +34,12 @@
                 <!-- <app-message-connection *ngIf="rightSideContent == 1"></app-message-connection> -->
 
                 <div class="main-tab" *ngIf="rightSideContent == 1">
-                        <div class="tabs">
-                            <nav class="navbar">
-                                <ul #mescon>
-                                    <li id="messages" [ngClass]="{activ: isSelected == true}" (click)="openPage(1)">
-                                        
-                                       <button>Message</button>
-                                    </li>
-                                    <li id="connections" [ngClass]="{activ: isSelected == false}" (click)="openPage(2)">
-                                        <button>Connection</button>
-                                    </li>
-                                </ul>
-                                
-                            </nav>  
-                            <div class="tabs-content" *ngIf="mesconpage == 1">
-                                <div class="text-center messageiconempty">
-                                    <img src="../../../assets/images/messageiconempty.png" alt="" class="img-fluid ">
-                                    <p class="sayhi">Say Hi!</p>
-                                </div>
-                            
-                                <p class="message-warn text-center">
-                                    Connect with others and message them!
-                                </p>
-                            </div>
-                            <div class="tabs-content" *ngIf="mesconpage == 2">
-                                <div class="image-profile">
-                                    <div class="aboutperson">
-                                         <h3>Fun girl</h3>
-                                         <h6>Age: 32</h6>
-                                         <h6>New York, New York City</h6>
-                         
-                                    </div>
-                                    <div class="personimage">
-                                       <img class="img-fluid2 rounded-circle " src="/../assets/images/designone.jpg" alt="shek" >
-                                    </div>
-                                                
-                                 </div>
-                            </div>
-                       </div>
+                    <app-message-connection></app-message-connection>
    
                 </div>
+
+
+                <!-- End of Messages of Connections  -->
 
                 <div class="edit-profile-images" *ngIf="rightSideContent === 2">
                     <div class="profile-images" (click)="gotoProfileImages()"

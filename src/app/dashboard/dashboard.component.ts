@@ -46,11 +46,7 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  openMessagePage(){
-     this.mesconsmallscreenisSelected = true;
-     this.isSelected = false;
-
-  }
+ 
 
   changeStyle($event:any){
       
@@ -150,6 +146,12 @@ export class DashboardComponent implements OnInit {
     
    
   }
+
+  openMessagePage(){
+    this.mesconsmallscreenisSelected = true;
+    this.isSelected = false;
+
+ }
 
   peopleButtonClicked(){
      this.mesconsmallscreen = true;

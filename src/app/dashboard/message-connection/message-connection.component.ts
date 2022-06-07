@@ -8,9 +8,16 @@ import { Component, OnInit , ViewEncapsulation} from '@angular/core';
 })
 export class MessageConnectionComponent implements OnInit {
 
+  isSelected = true;
+  mesconpage = 1;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  openPage( num:number){
+         this.mesconpage = num;
   }
 
 }

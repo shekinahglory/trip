@@ -6,7 +6,7 @@ import { element } from 'protractor';
   templateUrl: './dashboard-right.component.html',
   styleUrls: ['./dashboard-right.component.css']
 })
-export class DashboardRightComponent {
+export class DashboardRightComponent implements OnInit {
 
   images = [
     "/../../assets/images/girl.JPG",
@@ -28,7 +28,20 @@ export class DashboardRightComponent {
   
 
   constructor(private renderer: Renderer2) { }
+  
+  ngOnInit(){
+   
 
+    const heightNoHeader = window.innerHeight - (window.innerHeight * 0.3);
+    const height = heightNoHeader + 'px';
+    const el:HTMLElement | null = document.getElementById("carousel-wrapper-id");
+    const el2:HTMLElement | null = document.getElementById("container");
+    const el3:HTMLElement | null = document.getElementById("image-flui-id");
+
+    this.renderer.setStyle(el, 'height', heightNoHeader+ 'px')
+    this.renderer.setStyle(el2, 'height', heightNoHeader+ 'px')
+
+  }
   
 
   selectedImage(index: number){

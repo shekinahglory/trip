@@ -12,8 +12,8 @@
         <img id="left" src="../../assets/images/leftarrow.png" alt=""
             [ngClass]="{'oppacity': selectedIndex === 0}" (click)="onPrevClick()">
         
-            <div class="middle">
-                <section id="middle" class="carousel-wrapper" >
+            <div class="middle" id="middle">
+                <section id="carousel-wrapper-id"  class="carousel-wrapper" >
                     <div *ngIf="indicators" class="carousel-dot-container">
                         <span *ngFor="let dot of images; let i = index" [ngClass]="{'active': selectedIndex === i}"
                             (click)="selectedImage(i)" class="dot">
@@ -21,10 +21,10 @@
         
                     </div>
         
-                    <div *ngFor="let image of images; let i=index" class="carousel-container"
+                    <div *ngFor="let image of images; let i=index" id="image-flui-id" class="carousel-container"
                      (mouseover)="showUserInfo()" (mouseout)="remoteUserInfo()"
                     >
-                        <img data-attr="img" [src]="image" alt="" class="image-flui"
+                        <img data-attr="img" [src]="image" alt=""  class="image-flui"
                             [ngClass]="{'image-active': selectedIndex === i}">
                     </div>
                     <div class="name-container">
