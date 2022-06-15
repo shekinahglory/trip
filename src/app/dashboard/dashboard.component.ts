@@ -150,13 +150,14 @@ export class DashboardComponent implements OnInit {
   openMessagePage(){
     this.mesconsmallscreenisSelected = true;
     this.isSelected = false;
+    this.router.navigateByUrl("/dashboard/mess&con");
 
  }
 
   peopleButtonClicked(){
      this.mesconsmallscreen = true;
      this.isSelected = true;
-    //  this.router.navigateByUrl("/dashboard")
+     this.router.navigateByUrl("/dashboard");
   }
 
   gotoDeleteaccount(){

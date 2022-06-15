@@ -53,7 +53,8 @@ const routes: Routes = [
     {path: "", component: DashboardRightComponent},
      {path:"accountsettings", component: AccountsettingsComponent},
      {path:"deleteaccount", component: DeleteAccountComponent},
-     {path:"editabout", component: EditAboutComponent}
+     {path:"editabout", component: EditAboutComponent},
+     {path: "mess&con", component: MessageConnectionComponent}
      
     
   ]},
